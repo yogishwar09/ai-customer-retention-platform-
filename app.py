@@ -1,295 +1,112 @@
 import streamlit as st
-import pandas as pd
-import plotly.express as px 
 
-from src.predict import predict_churn
-
-
-# PAGE CONFIGURATION
+# ---------------- PAGE CONFIG ----------------
 st.set_page_config(
     page_title="AI Customer Retention Platform",
     page_icon="📊",
     layout="wide"
 )
 
+# ---------------- SIDEBAR ----------------
+st.sidebar.title("📊 AI Retention System")
 
-# CUSTOM CSS STYLING 
-
-# LOAD DATA
-df = pd.read_csv('data/WA_Fn-UseC_-Telco-Customer-Churn.csv')
-
-importance_df = pd.read_csv('model/feature_importance.csv')
-st.markdown("""
-<style>
-
-/* Main App Background */
-.stApp {
-    background-color: #0E1117;
-    color: white;
-}
-
-/* Headings */
-h1, h2, h3, h4 {
-    color: white;
-}
-
-/* Sidebar */
-section[data-testid="stSidebar"] {
-    background-color: #161A23;
-}
-
-/* Metric Cards */
-div[data-testid="metric-container"] {
-    background: linear-gradient(145deg, #1f2937, #111827);
-    border: 1px solid #374151;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.4);
-}
-
-/* Buttons */
-.stButton > button {
-    width: 100%;
-    background: linear-gradient(90deg, #FF4B4B, #FF6B6B);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    height: 3.2em;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-/* Button Hover */
-.stButton > button:hover {
-    background: linear-gradient(90deg, #FF2E2E, #FF4B4B);
-    color: white;
-}
-
-/* Success Box */
-.stSuccess {
-    border-radius: 12px;
-}
-
-/* Error Box */
-.stAlert {
-    border-radius: 12px;
-}
-
-</style>
-""", unsafe_allow_html=True)
-
-
-# HEADER
-st.title("📊 AI Customer Retention Intelligence Platform")
-
-st.markdown("""
-### Predict telecom customer churn using Machine Learning intelligence.
-""")
-
-
-# SIDEBAR
-st.sidebar.header("Customer Profile")
-
-
-# INPUTS
-gender = st.sidebar.selectbox(
-    "Gender",
-    ["Female", "Male"]
+page = st.sidebar.radio(
+    "Navigation",
+    ["🏠 Overview", "📈 Analytics", "🤖 Prediction", "🧠 Explainability"]
 )
 
-senior = st.sidebar.selectbox(
-    "Senior Citizen",
-    [0, 1]
-)
+# ---------------- OVERVIEW ----------------
+if page == "🏠 Overview":
 
-partner = st.sidebar.selectbox(
-    "Partner",
-    ["Yes", "No"]
-)
+    st.title("AI Customer Retention Platform")
+    st.markdown("### Predict customer churn using Machine Learning + Explainable AI")
 
-dependents = st.sidebar.selectbox(
-    "Dependents",
-    ["Yes", "No"]
-)
+    st.markdown("---")
 
-tenure = st.sidebar.slider(
-    "Tenure (Months)",
-    0,
-    72,
-    12
-)
+    # KPI SECTION
+    col1, col2, col3, col4 = st.columns(4)
 
-monthly_charges = st.sidebar.slider(
-    "Monthly Charges",
-    0,
-    150,
-    70
-)
+    with col1:
+        st.metric(label="Total Customers", value="10,000")
 
-total_charges = st.sidebar.number_input(
-    "Total Charges",
-    0.0,
-    10000.0,
-    1000.0
-)
+    with col2:
+        st.metric(label="Churn Rate", value="23%")
 
+    with col3:
+        st.metric(label="Model Accuracy", value="89%")
 
-# ENCODING
-gender = 1 if gender == "Male" else 0
-partner = 1 if partner == "Yes" else 0
-dependents = 1 if dependents == "Yes" else 0
+    with col4:
+        st.metric(label="High-Risk Customers", value="1,240")
 
+    st.markdown("---")
 
-# INPUT DATA
-input_dict = {
-    'gender': gender,
-    'SeniorCitizen': senior,
-    'Partner': partner,
-    'Dependents': dependents,
-    'tenure': tenure,
-    'PhoneService': 1,
-    'MultipleLines': 0,
-    'InternetService': 0,
-    'OnlineSecurity': 0,
-    'OnlineBackup': 0,
-    'DeviceProtection': 0,
-    'TechSupport': 0,
-    'StreamingTV': 0,
-    'StreamingMovies': 0,
-    'Contract': 0,
-    'PaperlessBilling': 1,
-    'PaymentMethod': 0,
-    'MonthlyCharges': monthly_charges,
-    'TotalCharges': total_charges
-}
+    st.subheader("📌 System Overview")
+    st.write("""
+    This platform uses Machine Learning to analyze customer behavior and predict churn probability.
+    It helps businesses identify at-risk customers early and take proactive retention actions.
+    """)
 
+    st.success("Use the sidebar to explore analytics, predictions, and model insights.")
 
-# PREDICTION BUTTON
-if st.button("🚀 Predict Churn"):
+# ---------------- ANALYTICS ----------------
+elif page == "📈 Analytics":
 
-    prediction, probability = predict_churn(input_dict)
+    st.title("📈 Analytics Dashboard")
 
-    st.subheader("📈 Prediction Analysis")
+    st.markdown("### Customer behavior insights will be displayed here")
 
-    # METRICS
+    st.info("Next step: We will add interactive charts (Plotly) for churn distribution, trends, and feature importance.")
+
+    # placeholder layout
     col1, col2 = st.columns(2)
 
     with col1:
-        st.metric(
-            "Churn Probability",
-            f"{probability:.2%}"
-        )
+        st.subheader("Churn Distribution")
+        st.write("Chart coming soon...")
 
     with col2:
-        st.metric(
-            "Retention Probability",
-            f"{(1 - probability):.2%}"
-        )
+        st.subheader("Feature Importance")
+        st.write("Chart coming soon...")
 
-    # HIGH RISK
-    if prediction == 1:
+# ---------------- PREDICTION ----------------
+elif page == "🤖 Prediction":
 
-        st.error("⚠️ High Risk Customer")
+    st.title("🤖 Churn Prediction Engine")
 
-        st.markdown("""
-        ## Recommended Retention Actions
+    st.markdown("### Enter customer details to predict churn probability")
 
-        - Offer personalized discounts
-        - Provide loyalty incentives
-        - Improve customer engagement
-        - Offer premium support services
-        - Provide long-term subscription benefits
-        """)
+    st.info("Next step: We will connect your Random Forest model here")
 
-    # LOW RISK
-    else:
+    with st.form("prediction_form"):
+        col1, col2 = st.columns(2)
 
-        st.success("✅ Low Churn Risk")
+        with col1:
+            age = st.number_input("Age", 18, 100, 30)
+            tenure = st.number_input("Tenure (months)", 0, 120, 12)
 
-        st.markdown("""
-        ## Positive Indicators
+        with col2:
+            balance = st.number_input("Account Balance", 0, 100000, 5000)
+            products = st.number_input("Number of Products", 1, 10, 1)
 
-        - Stable customer relationship
-        - Lower churn probability
-        - Good retention likelihood
-        - Strong customer engagement
-        - Healthy customer lifecycle
-        """)
-        
-        # ANALYTICS SECTION
-st.markdown("---")
+        submitted = st.form_submit_button("Predict Churn")
 
-st.header("📊 Customer Analytics Dashboard")
+    if submitted:
+        st.success("Prediction system will be integrated in next step 🚀")
 
+# ---------------- EXPLAINABILITY ----------------
+elif page == "🧠 Explainability":
 
-# CHURN DISTRIBUTION
-churn_count = df['Churn'].value_counts().reset_index()
+    st.title("🧠 Model Explainability")
 
-fig1 = px.pie(
-    churn_count,
-    names='Churn',
-    values='count',
-    title='Customer Churn Distribution'
-)
+    st.markdown("### Understanding why the model makes predictions")
 
-st.plotly_chart(fig1, use_container_width=True)
+    st.info("Next step: Feature importance + SHAP analysis")
 
+    st.subheader("Feature Importance")
+    st.write("Placeholder for bar chart")
 
-# MONTHLY CHARGES VS CHURN
-fig2 = px.box(
-    df,
-    x='Churn',
-    y='MonthlyCharges',
-    color='Churn',
-    title='Monthly Charges vs Churn'
-)
-
-st.plotly_chart(fig2, use_container_width=True)
-
-
-# TENURE DISTRIBUTION
-fig3 = px.histogram(
-    df,
-    x='tenure',
-    color='Churn',
-    title='Customer Tenure Distribution',
-    barmode='overlay'
-)
-
-st.plotly_chart(fig3, use_container_width=True)
-
-# FEATURE IMPORTANCE SECTION
-st.markdown("---")
-
-st.header("🧠 Explainable AI Insights")
-
-
-# SORT FEATURES
-importance_df = importance_df.sort_values(
-    by='Importance',
-    ascending=False
-)
-
-
-# FEATURE IMPORTANCE CHART
-fig4 = px.bar(
-    importance_df.head(10),
-    x='Importance',
-    y='Feature',
-    orientation='h',
-    title='Top Features Influencing Customer Churn'
-)
-
-st.plotly_chart(fig4, use_container_width=True)
-
-
-# BUSINESS INSIGHTS
-st.markdown("""
-## Key Business Insights
-
-- Customers with shorter tenure are more likely to churn
-- Higher monthly charges increase churn risk
-- Contract type strongly impacts retention
-- Tech support and online security improve customer retention
-- Long-term customers show better loyalty patterns
-""")
+    st.subheader("Business Interpretation")
+    st.write("""
+    Explainability helps stakeholders understand which factors influence customer churn most.
+    This improves trust and decision-making.
+    """)
