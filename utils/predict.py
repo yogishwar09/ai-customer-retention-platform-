@@ -1,40 +1,29 @@
 import joblib
 import pandas as pd
 
-# ===============================
-# LOAD ARTIFACTS
-# ===============================
+# Load artifacts
 model = joblib.load("model/churn_model.pkl")
 preprocessor = joblib.load("model/preprocessor.pkl")
 features = joblib.load("model/features.pkl")
 
 
-# ===============================
-# MAIN FUNCTION
-# ===============================
 def predict_churn(input_data):
 
     df = pd.DataFrame([input_data])
 
-    # ===============================
-    # FORCE ALL MISSING COLUMNS
-    # ===============================
+    # Align columns
     df = df.reindex(columns=features)
 
     # ===============================
-    # FIX DATA TYPES (VERY IMPORTANT)
+    # 🚨 FAST EMERGENCY FIX (CRITICAL)
     # ===============================
+
+    # convert everything to string-safe format first
     for col in df.columns:
+        df[col] = df[col].astype(str)
 
-        # numeric handling
-        if df[col].dtype != "object":
-            df[col] = pd.to_numeric(df[col], errors="coerce")
-
-        # fill missing values
-        if df[col].dtype == "object":
-            df[col] = df[col].fillna("Missing")
-        else:
-            df[col] = df[col].fillna(0)
+    # replace missing values safely
+    df = df.replace("nan", "Missing")
 
     # ===============================
     # TRANSFORM
