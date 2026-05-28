@@ -268,3 +268,8 @@ joblib.dump(preprocessor, "model/preprocessor.pkl")
 joblib.dump(list(X.columns), "model/features.pkl")
 
 print("✅ Model, Preprocessor & Features saved successfully!")
+
+import joblib
+
+# Save feature columns used during training
+joblib.dump(list(X.columns), "model/features.pkl")

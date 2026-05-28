@@ -2,7 +2,7 @@ import joblib
 import pandas as pd
 
 # ===============================
-# LOAD MODEL + PREPROCESSOR + FEATURES
+# LOAD ARTIFACTS
 # ===============================
 model = joblib.load("model/churn_model.pkl")
 preprocessor = joblib.load("model/preprocessor.pkl")
@@ -10,31 +10,41 @@ features = joblib.load("model/features.pkl")
 
 
 # ===============================
-# MAIN PREDICTION FUNCTION
+# MAIN FUNCTION
 # ===============================
 def predict_churn(input_data):
-    """
-    input_data: dict (single customer data)
-    """
 
-    # Convert input to DataFrame
-    input_df = pd.DataFrame([input_data])
+    df = pd.DataFrame([input_data])
 
     # ===============================
-    # ALIGN COLUMNS WITH TRAINING DATA
+    # FORCE ALL MISSING COLUMNS
     # ===============================
-    input_df = input_df.reindex(columns=features, fill_value=0)
+    df = df.reindex(columns=features)
 
     # ===============================
-    # PREPROCESS
+    # FIX DATA TYPES (VERY IMPORTANT)
     # ===============================
-    processed_data = preprocessor.transform(input_df)
+    for col in df.columns:
+
+        # numeric handling
+        if df[col].dtype != "object":
+            df[col] = pd.to_numeric(df[col], errors="coerce")
+
+        # fill missing values
+        if df[col].dtype == "object":
+            df[col] = df[col].fillna("Missing")
+        else:
+            df[col] = df[col].fillna(0)
+
+    # ===============================
+    # TRANSFORM
+    # ===============================
+    processed = preprocessor.transform(df)
 
     # ===============================
     # PREDICT
     # ===============================
-    prediction = model.predict(processed_data)[0]
-    probability = model.predict_proba(processed_data)[0][1]
+    prediction = model.predict(processed)[0]
+    probability = model.predict_proba(processed)[0][1]
 
-    # ✅ FIX: return clean tuple
     return prediction, probability
