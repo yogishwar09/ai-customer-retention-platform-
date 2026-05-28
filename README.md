@@ -1,92 +1,54 @@
-# 📊 AI Customer Retention Intelligence Platform
+# 📊 Customer Churn Prediction & Analytics System
 
-An end-to-end Machine Learning web application that predicts telecom customer churn using advanced analytics and interactive business intelligence dashboards.
+An end-to-end **Machine Learning + Business Intelligence SaaS-style application** that predicts customer churn and delivers actionable insights using telecom customer data.
 
----
-
-## 🚀 Features
-
-- Machine Learning churn prediction
-- Random Forest classification model
-- Interactive Streamlit dashboard
-- Customer analytics visualization
-- Explainable AI insights
-- Feature importance analysis
-- Business retention recommendations
-- Professional dark-themed UI
+This project simulates a real-world **AI product used in enterprise decision-making systems**.
 
 ---
 
-## 🛠️ Tech Stack
-
-- Python
-- Streamlit
-- Scikit-learn
-- Pandas
-- Plotly
-- Random Forest
-- SMOTE
+## 🚀 Live Demo
+👉 Add your Streamlit Cloud URL here
 
 ---
 
-## 📈 Machine Learning Pipeline
+## 📌 Project Overview
 
-1. Data preprocessing
-2. Feature engineering
-3. Label encoding
-4. SMOTE balancing
-5. Model training
-6. Model evaluation
-7. Prediction deployment
+Customer churn is one of the most critical problems in telecom industries. This system helps businesses:
 
----
+- Predict whether a customer will churn
+- Analyze key behavioral patterns
+- Identify high-risk customers early
+- Improve customer retention strategies using AI
 
-## 📊 Dashboard Features
-
-- Churn probability prediction
-- Retention probability analysis
-- Customer analytics
-- Interactive visualizations
-- Explainable AI charts
+The system combines:
+✔ Machine Learning  
+✔ Data Engineering  
+✔ Business Intelligence  
+✔ Interactive Web Dashboard  
 
 ---
 
-## ▶️ Run Locally
+## 🧠 Problem Statement
 
-```bash
-pip install -r requirements.txt
-python3 -m streamlit run app.py
-```
+Telecom companies lose significant revenue due to customer churn. The goal of this project is to:
 
----
-
-## 📁 Project Structure
-
-```text
-churn-prediction/
-│
-├── data/
-├── model/
-├── notebooks/
-├── src/
-├── app.py
-├── model_training.py
-├── requirements.txt
-└── README.md
-```
+- Predict churn before it happens
+- Understand key factors influencing churn
+- Help businesses take preventive actions
 
 ---
 
-## 🎯 Business Value
+## ⚙️ Tech Stack
 
-This platform helps telecom companies:
-- identify high-risk customers
-- reduce customer churn
-- improve retention strategies
-- optimize customer engagement
+- Python  
+- Streamlit (UI framework)  
+- Pandas, NumPy (Data processing)  
+- Scikit-learn (ML pipeline)  
+- XGBoost (Model)  
+- Imbalanced-learn (SMOTE)  
+- Matplotlib, Seaborn (Visualization)  
+- Joblib (Model serialization)
 
 ---
 
-## 👨‍💻 Author
-
-Yogishwar
+## 🏗️ System Architecture

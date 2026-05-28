@@ -1,112 +1,170 @@
 import streamlit as st
+import pandas as pd
+import numpy as np
+import joblib
+import os
 
-# ---------------- PAGE CONFIG ----------------
+# =====================================================
+# PAGE CONFIG
+# =====================================================
 st.set_page_config(
-    page_title="AI Customer Retention Platform",
-    page_icon="📊",
+    page_title="Customer Churn AI Platform",
     layout="wide"
 )
 
-# ---------------- SIDEBAR ----------------
-st.sidebar.title("📊 AI Retention System")
+st.title("📊 Customer Churn Prediction & Analytics System")
+st.markdown("AI-powered SaaS platform for predicting and analyzing telecom customer churn")
+
+# =====================================================
+# LOAD MODEL + PREPROCESSOR (SAFE)
+# =====================================================
+MODEL_PATH = os.path.join("model", "churn_model.pkl")
+PREPROCESSOR_PATH = os.path.join("model", "preprocessor.pkl")
+
+@st.cache_resource
+def load_assets():
+    if not os.path.exists(MODEL_PATH):
+        st.error("❌ Model file not found")
+        st.stop()
+
+    if not os.path.exists(PREPROCESSOR_PATH):
+        st.error("❌ Preprocessor file not found")
+        st.stop()
+
+    model = joblib.load(MODEL_PATH)
+    preprocessor = joblib.load(PREPROCESSOR_PATH)
+
+    return model, preprocessor
+
+model, preprocessor = load_assets()
+
+# =====================================================
+# SIDEBAR NAVIGATION
+# =====================================================
+st.sidebar.title("📌 Navigation")
 
 page = st.sidebar.radio(
-    "Navigation",
-    ["🏠 Overview", "📈 Analytics", "🤖 Prediction", "🧠 Explainability"]
+    "Go to",
+    ["🏠 Home", "🔮 Single Prediction", "📦 Batch Prediction", "📊 System Info"]
 )
 
-# ---------------- OVERVIEW ----------------
-if page == "🏠 Overview":
+# =====================================================
+# HOME PAGE
+# =====================================================
+if page == "🏠 Home":
 
-    st.title("AI Customer Retention Platform")
-    st.markdown("### Predict customer churn using Machine Learning + Explainable AI")
+    st.subheader("Welcome to AI Churn Intelligence Platform 🚀")
 
-    st.markdown("---")
+    st.markdown("""
+    This system helps telecom businesses:
 
-    # KPI SECTION
-    col1, col2, col3, col4 = st.columns(4)
-
-    with col1:
-        st.metric(label="Total Customers", value="10,000")
-
-    with col2:
-        st.metric(label="Churn Rate", value="23%")
-
-    with col3:
-        st.metric(label="Model Accuracy", value="89%")
-
-    with col4:
-        st.metric(label="High-Risk Customers", value="1,240")
-
-    st.markdown("---")
-
-    st.subheader("📌 System Overview")
-    st.write("""
-    This platform uses Machine Learning to analyze customer behavior and predict churn probability.
-    It helps businesses identify at-risk customers early and take proactive retention actions.
+    ✔ Predict customer churn using Machine Learning  
+    ✔ Analyze customer behavior patterns  
+    ✔ Identify high-risk customers early  
+    ✔ Improve customer retention strategy  
     """)
 
-    st.success("Use the sidebar to explore analytics, predictions, and model insights.")
+    col1, col2, col3 = st.columns(3)
 
-# ---------------- ANALYTICS ----------------
-elif page == "📈 Analytics":
+    col1.metric("Model", "XGBoost")
+    col2.metric("Pipeline", "Preprocess + ML")
+    col3.metric("Status", "Active")
 
-    st.title("📈 Analytics Dashboard")
+    st.info("Use sidebar to navigate between prediction tools and system info.")
 
-    st.markdown("### Customer behavior insights will be displayed here")
+# =====================================================
+# SINGLE PREDICTION (UPGRADED UI)
+# =====================================================
+elif page == "🔮 Single Prediction":
 
-    st.info("Next step: We will add interactive charts (Plotly) for churn distribution, trends, and feature importance.")
+    st.subheader("🔮 Customer Churn Prediction")
 
-    # placeholder layout
+    st.markdown("Enter customer details to estimate churn probability")
+
     col1, col2 = st.columns(2)
 
     with col1:
-        st.subheader("Churn Distribution")
-        st.write("Chart coming soon...")
+        tenure = st.number_input("📅 Tenure (months)", 0, 100, 12)
+        monthly_charges = st.number_input("💰 Monthly Charges", 0.0, 200.0, 70.0)
 
     with col2:
-        st.subheader("Feature Importance")
-        st.write("Chart coming soon...")
+        total_charges = st.number_input("🧾 Total Charges", 0.0, 10000.0, 1000.0)
 
-# ---------------- PREDICTION ----------------
-elif page == "🤖 Prediction":
+    input_df = pd.DataFrame([{
+        "tenure": tenure,
+        "MonthlyCharges": monthly_charges,
+        "TotalCharges": total_charges
+    }])
 
-    st.title("🤖 Churn Prediction Engine")
+    st.divider()
 
-    st.markdown("### Enter customer details to predict churn probability")
+    if st.button("🚀 Predict Churn", use_container_width=True):
 
-    st.info("Next step: We will connect your Random Forest model here")
+        try:
+            processed = preprocessor.transform(input_df)
 
-    with st.form("prediction_form"):
-        col1, col2 = st.columns(2)
+            prediction = model.predict(processed)[0]
+            probability = model.predict_proba(processed)[0][1]
 
-        with col1:
-            age = st.number_input("Age", 18, 100, 30)
-            tenure = st.number_input("Tenure (months)", 0, 120, 12)
+            st.subheader("📊 Prediction Result")
 
-        with col2:
-            balance = st.number_input("Account Balance", 0, 100000, 5000)
-            products = st.number_input("Number of Products", 1, 10, 1)
+            col1, col2 = st.columns(2)
 
-        submitted = st.form_submit_button("Predict Churn")
+            col1.metric("Churn Probability", f"{probability:.2f}")
+            col2.metric("Prediction", "Churn ❌" if prediction == 1 else "No Churn ✅")
 
-    if submitted:
-        st.success("Prediction system will be integrated in next step 🚀")
+            if probability > 0.7:
+                st.error("⚠️ High Risk Customer - Immediate attention required")
+            elif probability > 0.4:
+                st.warning("⚠️ Medium Risk Customer")
+            else:
+                st.success("✅ Low Risk Customer")
 
-# ---------------- EXPLAINABILITY ----------------
-elif page == "🧠 Explainability":
+        except Exception as e:
+            st.error(f"Prediction Error: {str(e)}")
 
-    st.title("🧠 Model Explainability")
+# =====================================================
+# BATCH PREDICTION INFO PAGE
+# =====================================================
+elif page == "📦 Batch Prediction":
 
-    st.markdown("### Understanding why the model makes predictions")
+    st.subheader("📦 Batch Prediction System")
 
-    st.info("Next step: Feature importance + SHAP analysis")
+    st.markdown("""
+    ### How to use:
+    1. Go to batch prediction page  
+    2. Upload CSV file with customer data  
+    3. Run prediction  
+    4. Download results  
 
-    st.subheader("Feature Importance")
-    st.write("Placeholder for bar chart")
-
-    st.subheader("Business Interpretation")
-    st.write("""
-    Explainability helps stakeholders understand which factors influence customer churn most.
-    This improves trust and decision-making.
+    👉 Full batch processing available in `pages/batch_prediction.py`
     """)
+
+    st.info("Upload multiple customers for bulk churn prediction")
+
+# =====================================================
+# SYSTEM INFO PAGE
+# =====================================================
+elif page == "📊 System Info":
+
+    st.subheader("📊 Model Information")
+
+    st.markdown("""
+    ✔ Model Type: XGBoost Classifier  
+    ✔ Preprocessing: ColumnTransformer Pipeline  
+    ✔ Handling: SMOTE for imbalance  
+    ✔ Deployment: Streamlit Cloud Ready  
+    """)
+
+    st.markdown("### Features Used")
+
+    st.markdown("""
+    - Tenure  
+    - Monthly Charges  
+    - Total Charges  
+    - Contract Type  
+    - Internet Services  
+    - Customer Demographics  
+    """)
+
+    st.success("System is fully operational 🚀")

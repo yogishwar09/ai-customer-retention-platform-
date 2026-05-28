@@ -1,0 +1,39 @@
+.stApp {
+    background-color: #0f172a;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+section[data-testid="stSidebar"] {
+    background-color: #111827;
+}
+
+.hero-box {
+    background: #1e293b;
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.metric-card {
+    background: #1e293b;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #334155;
+}
+
+.info-box {
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 20px;
+    margin-top: 20px;
+    border: 1px solid #334155;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    color: #94a3b8;
+}
