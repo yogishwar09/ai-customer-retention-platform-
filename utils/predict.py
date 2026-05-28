@@ -2,9 +2,11 @@ import joblib
 import pandas as pd
 
 # =====================================================
-# LOAD FINAL PIPELINE MODEL
+# LOAD CORRECT MODEL FILE
 # =====================================================
-model = joblib.load("model/final_model.pkl")
+model = joblib.load("model/churn_model.pkl")
+preprocessor = joblib.load("model/preprocessor.pkl")
+features = joblib.load("model/features.pkl")
 
 
 # =====================================================
@@ -12,13 +14,15 @@ model = joblib.load("model/final_model.pkl")
 # =====================================================
 def predict_churn(input_data):
 
-    # Convert input dict → DataFrame
     df = pd.DataFrame([input_data])
 
-    # =================================================
-    # DIRECT PREDICTION (PIPELINE HANDLES EVERYTHING)
-    # =================================================
-    prediction = model.predict(df)[0]
-    probability = model.predict_proba(df)[0][1]
+    # align columns exactly as training
+    df = df.reindex(columns=features, fill_value=0)
+
+    # preprocess
+    processed = preprocessor.transform(df)
+
+    prediction = model.predict(processed)[0]
+    probability = model.predict_proba(processed)[0][1]
 
     return prediction, probability
