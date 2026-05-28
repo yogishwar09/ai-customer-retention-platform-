@@ -9,7 +9,6 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.impute import SimpleImputer
 
 from xgboost import XGBClassifier
-from imblearn.over_sampling import SMOTE
 
 # =====================================================
 # LOAD DATA
@@ -17,7 +16,7 @@ from imblearn.over_sampling import SMOTE
 df = pd.read_csv("data/WA_Fn-UseC_-Telco-Customer-Churn.csv")
 
 # =====================================================
-# CLEANING
+# CLEAN DATA
 # =====================================================
 df.drop("customerID", axis=1, inplace=True)
 
@@ -40,19 +39,14 @@ df["TenureGroup"] = pd.cut(
 df["HighMonthlyCharges"] = np.where(df["MonthlyCharges"] > 70, 1, 0)
 
 service_cols = [
-    "PhoneService",
-    "OnlineSecurity",
-    "OnlineBackup",
-    "DeviceProtection",
-    "TechSupport",
-    "StreamingTV",
-    "StreamingMovies"
+    "PhoneService", "OnlineSecurity", "OnlineBackup",
+    "DeviceProtection", "TechSupport", "StreamingTV", "StreamingMovies"
 ]
 
 df["TotalServices"] = (df[service_cols] == "Yes").sum(axis=1)
 
 # =====================================================
-# SPLIT FEATURES
+# SPLIT
 # =====================================================
 X = df.drop("Churn", axis=1)
 y = df["Churn"]
@@ -79,7 +73,21 @@ preprocessor = ColumnTransformer([
 ])
 
 # =====================================================
-# SPLIT DATA
+# MODEL PIPELINE (IMPORTANT FIX)
+# =====================================================
+model = Pipeline(steps=[
+    ("preprocessor", preprocessor),
+    ("classifier", XGBClassifier(
+        n_estimators=400,
+        learning_rate=0.05,
+        max_depth=6,
+        random_state=42,
+        eval_metric="auc"
+    ))
+])
+
+# =====================================================
+# TRAIN
 # =====================================================
 X_train, X_test, y_train, y_test = train_test_split(
     X, y,
@@ -88,39 +96,12 @@ X_train, X_test, y_train, y_test = train_test_split(
     stratify=y
 )
 
-# =====================================================
-# TRANSFORM + SMOTE
-# =====================================================
-X_train_processed = preprocessor.fit_transform(X_train)
-X_test_processed = preprocessor.transform(X_test)
-
-smote = SMOTE(random_state=42)
-X_train_smote, y_train_smote = smote.fit_resample(
-    X_train_processed,
-    y_train
-)
-
-# =====================================================
-# MODEL
-# =====================================================
-model = XGBClassifier(
-    n_estimators=500,
-    learning_rate=0.05,
-    max_depth=6,
-    subsample=0.8,
-    colsample_bytree=0.8,
-    eval_metric="auc",
-    random_state=42
-)
-
 print("Training model...")
-model.fit(X_train_smote, y_train_smote)
+model.fit(X_train, y_train)
 
 # =====================================================
-# SAVE ARTIFACTS (CLEAN ONLY ONCE)
+# SAVE FINAL MODEL ONLY
 # =====================================================
-joblib.dump(model, "model/churn_model.pkl")
-joblib.dump(preprocessor, "model/preprocessor.pkl")
-joblib.dump(list(X.columns), "model/features.pkl")
+joblib.dump(model, "model/final_model.pkl")
 
-print("✅ Model training completed and saved successfully!")
+print("✅ FINAL MODEL SAVED SUCCESSFULLY!")

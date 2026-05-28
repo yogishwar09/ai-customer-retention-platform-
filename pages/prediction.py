@@ -4,17 +4,13 @@ from utils.predict import predict_churn
 # =====================================================
 # PAGE TITLE
 # =====================================================
-
 st.title("🔮 Customer Churn Prediction")
 
-st.write(
-    "Predict customer churn probability using AI-powered machine learning."
-)
+st.write("Predict whether a customer is likely to churn using AI-powered ML model.")
 
 # =====================================================
-# INPUTS
+# INPUT LAYOUT
 # =====================================================
-
 col1, col2 = st.columns(2)
 
 with col1:
@@ -25,7 +21,9 @@ with col1:
 
     partner = st.selectbox("Partner", ["Yes", "No"])
 
-    tenure = st.slider("Tenure", 0, 72, 12)
+    dependents = st.selectbox("Dependents", ["Yes", "No"])
+
+    tenure = st.slider("Tenure (months)", 0, 72, 12)
 
     monthly = st.number_input("Monthly Charges", 0.0, 200.0, 70.0)
 
@@ -56,15 +54,14 @@ with col2:
 # =====================================================
 # PREDICT BUTTON
 # =====================================================
+if st.button("🚀 Predict Churn"):
 
-if st.button("🚀 Predict Customer Churn"):
-
-    # ✅ PASS DICT (NOT DATAFRAME)
+    # Input dictionary (must match training columns conceptually)
     input_data = {
         "gender": gender,
         "SeniorCitizen": senior,
         "Partner": partner,
-        "Dependents": "No",
+        "Dependents": dependents,
         "tenure": tenure,
         "PhoneService": "Yes",
         "MultipleLines": "No",
@@ -82,12 +79,16 @@ if st.button("🚀 Predict Customer Churn"):
         "TotalCharges": total
     }
 
+    # Prediction
     prediction, probability = predict_churn(input_data)
 
     churn_percent = round(probability * 100, 2)
     confidence = round(max(probability, 1 - probability) * 100, 2)
 
-    st.write("")
+    # =================================================
+    # RESULTS UI
+    # =================================================
+    st.subheader("📊 Prediction Result")
 
     col1, col2 = st.columns(2)
 
@@ -99,11 +100,12 @@ if st.button("🚀 Predict Customer Churn"):
 
     st.write("")
 
+    # Risk classification
     if churn_percent >= 70:
-        st.error("⚠ High churn risk customer detected.")
+        st.error("⚠ High Risk: Customer likely to churn")
 
     elif churn_percent >= 40:
-        st.warning("⚠ Medium churn risk customer.")
+        st.warning("⚠ Medium Risk: Monitor customer")
 
     else:
-        st.success("✅ Low churn risk customer.")
+        st.success("✅ Low Risk: Customer is stable")
