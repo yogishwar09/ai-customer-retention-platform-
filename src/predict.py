@@ -1,6 +1,7 @@
 import joblib
 import pandas as pd
 
+# ✅ correct file (THIS EXISTS in your repo)
 model = joblib.load("model/churn_model.pkl")
 preprocessor = joblib.load("model/preprocessor.pkl")
 features = joblib.load("model/features.pkl")
