@@ -1,50 +1,22 @@
-import pickle
+import joblib
 import pandas as pd
 
-
-# Load model and scaler
-model = pickle.load(open('model/churn_model.pkl', 'rb'))
-
-scaler = pickle.load(open('model/scaler.pkl', 'rb'))
+model = joblib.load("model/churn_model.pkl")
+preprocessor = joblib.load("model/preprocessor.pkl")
+features = joblib.load("model/features.pkl")
 
 
-FEATURE_ORDER = [
-    'gender',
-    'SeniorCitizen',
-    'Partner',
-    'Dependents',
-    'tenure',
-    'PhoneService',
-    'MultipleLines',
-    'InternetService',
-    'OnlineSecurity',
-    'OnlineBackup',
-    'DeviceProtection',
-    'TechSupport',
-    'StreamingTV',
-    'StreamingMovies',
-    'Contract',
-    'PaperlessBilling',
-    'PaymentMethod',
-    'MonthlyCharges',
-    'TotalCharges'
-]
+def predict_churn(input_data):
 
+    df = pd.DataFrame([input_data])
 
-def predict_churn(input_dict):
+    # align columns
+    df = df.reindex(columns=features, fill_value=0)
 
-    input_df = pd.DataFrame([input_dict])
+    # preprocess
+    processed = preprocessor.transform(df)
 
-    # Match training feature order
-    input_df = input_df[FEATURE_ORDER]
-
-    # Scale input
-    input_scaled = scaler.transform(input_df)
-
-    # Predict
-    prediction = model.predict(input_scaled)[0]
-
-    # Probability
-    probability = model.predict_proba(input_scaled)[0][1]
+    prediction = model.predict(processed)[0]
+    probability = model.predict_proba(processed)[0][1]
 
     return prediction, probability
