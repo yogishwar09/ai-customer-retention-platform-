@@ -258,3 +258,13 @@ joblib.dump(
 )
 
 print("\n✅ Model Saved Successfully!")
+
+import joblib
+
+joblib.dump(model, "model/churn_model.pkl")
+joblib.dump(preprocessor, "model/preprocessor.pkl")
+
+# ✅ SAVE FEATURE NAMES
+joblib.dump(list(X.columns), "model/features.pkl")
+
+print("✅ Model, Preprocessor & Features saved successfully!")

@@ -1,50 +1,40 @@
 import joblib
 import pandas as pd
 
-from utils.preprocess import engineer_features
+# ===============================
+# LOAD MODEL + PREPROCESSOR + FEATURES
+# ===============================
+model = joblib.load("model/churn_model.pkl")
+preprocessor = joblib.load("model/preprocessor.pkl")
+features = joblib.load("model/features.pkl")
 
-# =====================================================
-# LOAD MODEL
-# =====================================================
 
-model = joblib.load(
-    "model/churn_model.pkl"
-)
+# ===============================
+# MAIN PREDICTION FUNCTION
+# ===============================
+def predict_churn(input_data):
+    """
+    input_data: dict (single customer data)
+    """
 
-preprocessor = joblib.load(
-    "model/preprocessor.pkl"
-)
+    # Convert input to DataFrame
+    input_df = pd.DataFrame([input_data])
 
-# =====================================================
-# PREDICTION FUNCTION
-# =====================================================
+    # ===============================
+    # ALIGN COLUMNS WITH TRAINING DATA
+    # ===============================
+    input_df = input_df.reindex(columns=features, fill_value=0)
 
-def predict_churn(input_df):
-
-    # ==========================================
-    # FEATURE ENGINEERING
-    # ==========================================
-
-    input_df = engineer_features(input_df)
-
-    # ==========================================
+    # ===============================
     # PREPROCESS
-    # ==========================================
+    # ===============================
+    processed_data = preprocessor.transform(input_df)
 
-    processed_data = preprocessor.transform(
-        input_df
-    )
+    # ===============================
+    # PREDICT
+    # ===============================
+    prediction = model.predict(processed_data)[0]
+    probability = model.predict_proba(processed_data)[0][1]
 
-    # ==========================================
-    # PREDICTION
-    # ==========================================
-
-    prediction = model.predict(
-        processed_data
-    )[0]
-
-    probability = model.predict_proba(
-        processed_data
-    )[0][1]
-
+    # ✅ FIX: return clean tuple
     return prediction, probability

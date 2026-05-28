@@ -1,6 +1,4 @@
 import streamlit as st
-import pandas as pd
-
 from utils.predict import predict_churn
 
 # =====================================================
@@ -10,10 +8,7 @@ from utils.predict import predict_churn
 st.title("🔮 Customer Churn Prediction")
 
 st.write(
-    """
-Predict customer churn probability
-using AI-powered machine learning.
-"""
+    "Predict customer churn probability using AI-powered machine learning."
 )
 
 # =====================================================
@@ -24,34 +19,15 @@ col1, col2 = st.columns(2)
 
 with col1:
 
-    gender = st.selectbox(
-        "Gender",
-        ["Male", "Female"]
-    )
+    gender = st.selectbox("Gender", ["Male", "Female"])
 
-    senior = st.selectbox(
-        "Senior Citizen",
-        [0, 1]
-    )
+    senior = st.selectbox("Senior Citizen", [0, 1])
 
-    partner = st.selectbox(
-        "Partner",
-        ["Yes", "No"]
-    )
+    partner = st.selectbox("Partner", ["Yes", "No"])
 
-    tenure = st.slider(
-        "Tenure",
-        0,
-        72,
-        12
-    )
+    tenure = st.slider("Tenure", 0, 72, 12)
 
-    monthly = st.number_input(
-        "Monthly Charges",
-        0.0,
-        200.0,
-        70.0
-    )
+    monthly = st.number_input("Monthly Charges", 0.0, 200.0, 70.0)
 
 with col2:
 
@@ -62,11 +38,7 @@ with col2:
 
     contract = st.selectbox(
         "Contract",
-        [
-            "Month-to-month",
-            "One year",
-            "Two year"
-        ]
+        ["Month-to-month", "One year", "Two year"]
     )
 
     payment = st.selectbox(
@@ -79,12 +51,7 @@ with col2:
         ]
     )
 
-    total = st.number_input(
-        "Total Charges",
-        0.0,
-        10000.0,
-        1000.0
-    )
+    total = st.number_input("Total Charges", 0.0, 10000.0, 1000.0)
 
 # =====================================================
 # PREDICT BUTTON
@@ -92,95 +59,51 @@ with col2:
 
 if st.button("🚀 Predict Customer Churn"):
 
-    input_data = pd.DataFrame([{
-
+    # ✅ PASS DICT (NOT DATAFRAME)
+    input_data = {
         "gender": gender,
-
         "SeniorCitizen": senior,
-
         "Partner": partner,
-
         "Dependents": "No",
-
         "tenure": tenure,
-
         "PhoneService": "Yes",
-
         "MultipleLines": "No",
-
         "InternetService": internet,
-
         "OnlineSecurity": "No",
-
         "OnlineBackup": "No",
-
         "DeviceProtection": "No",
-
         "TechSupport": "No",
-
         "StreamingTV": "No",
-
         "StreamingMovies": "No",
-
         "Contract": contract,
-
         "PaperlessBilling": "Yes",
-
         "PaymentMethod": payment,
-
         "MonthlyCharges": monthly,
-
         "TotalCharges": total
-    }])
+    }
 
-    prediction, probability = predict_churn(
-        input_data
-    )
+    prediction, probability = predict_churn(input_data)
 
-    churn_percent = round(
-        probability * 100,
-        2
-    )
-
-    confidence = round(
-        max(probability, 1 - probability) * 100,
-        2
-    )
+    churn_percent = round(probability * 100, 2)
+    confidence = round(max(probability, 1 - probability) * 100, 2)
 
     st.write("")
 
     col1, col2 = st.columns(2)
 
     with col1:
-
-        st.metric(
-            "Churn Probability",
-            f"{churn_percent}%"
-        )
+        st.metric("Churn Probability", f"{churn_percent}%")
 
     with col2:
-
-        st.metric(
-            "Model Confidence",
-            f"{confidence}%"
-        )
+        st.metric("Model Confidence", f"{confidence}%")
 
     st.write("")
 
     if churn_percent >= 70:
-
-        st.error(
-            "⚠ High churn risk customer detected."
-        )
+        st.error("⚠ High churn risk customer detected.")
 
     elif churn_percent >= 40:
-
-        st.warning(
-            "⚠ Medium churn risk customer."
-        )
+        st.warning("⚠ Medium churn risk customer.")
 
     else:
-
-        st.success(
-            "✅ Low churn risk customer."
-        )
+        st.success("✅ Low churn risk customer.")
