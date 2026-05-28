@@ -2,7 +2,7 @@ import joblib
 import pandas as pd
 
 # =====================================================
-# LOAD CORRECT MODEL FILE
+# LOAD MODEL + PREPROCESSOR + FEATURES
 # =====================================================
 model = joblib.load("model/churn_model.pkl")
 preprocessor = joblib.load("model/preprocessor.pkl")
@@ -16,10 +16,22 @@ def predict_churn(input_data):
 
     df = pd.DataFrame([input_data])
 
-    # align columns exactly as training
-    df = df.reindex(columns=features, fill_value=0)
+    # =================================================
+    # FORCE EXACT FEATURE ALIGNMENT
+    # =================================================
+    df = df.reindex(columns=features)
 
-    # preprocess
+    # Fill missing numeric values safely
+    df = df.fillna(0)
+
+    # Convert all object columns safely (VERY IMPORTANT FIX)
+    for col in df.columns:
+        if df[col].dtype == "object":
+            df[col] = df[col].astype(str)
+
+    # =================================================
+    # PREPROCESS
+    # =================================================
     processed = preprocessor.transform(df)
 
     prediction = model.predict(processed)[0]
