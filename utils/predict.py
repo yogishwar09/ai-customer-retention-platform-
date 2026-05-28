@@ -1,7 +1,9 @@
 import joblib
 import pandas as pd
 
+# load artifacts
 model = joblib.load("model/churn_model.pkl")
+preprocessor = joblib.load("model/preprocessor.pkl")
 features = joblib.load("model/features.pkl")
 
 
@@ -9,26 +11,30 @@ def predict_churn(input_data):
 
     df = pd.DataFrame([input_data])
 
-    # align columns
+    # align columns exactly
     df = df.reindex(columns=features)
 
     # ===============================
-    # SAFE CLEANING (NO sklearn dependency)
+    # FIX MISSING VALUES ONLY (NO TYPE BREAKAGE)
     # ===============================
-
     for col in df.columns:
-
-        # convert everything to string (safe for encoding pipelines)
-        df[col] = df[col].astype(str)
-
-        # fix missing values
-        df[col] = df[col].replace("nan", "Missing")
+        if df[col].dtype == "object":
+            df[col] = df[col].fillna("Missing")
+        else:
+            df[col] = df[col].fillna(0)
 
     # ===============================
-    # DIRECT MODEL PREDICTION
+    # IMPORTANT: USE PREPROCESSOR (THIS IS REQUIRED)
     # ===============================
-    prediction = model.predict(df)[0]
+    processed = preprocessor.transform(df)
 
-    probability = model.predict_proba(df)[0][1]
+    # convert to numeric-safe format for xgboost
+    processed = pd.DataFrame(processed)
+
+    # ===============================
+    # PREDICT
+    # ===============================
+    prediction = model.predict(processed)[0]
+    probability = model.predict_proba(processed)[0][1]
 
     return prediction, probability
