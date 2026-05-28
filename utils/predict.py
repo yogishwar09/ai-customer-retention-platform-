@@ -3,36 +3,29 @@ import pandas as pd
 import numpy as np
 
 # =====================================================
-# LOAD ARTIFACTS
+# LOAD ONLY ONE MODEL (NO PREPROCESSOR)
 # =====================================================
-model = joblib.load("model/churn_model.pkl")
-preprocessor = joblib.load("model/preprocessor.pkl")
+model = joblib.load("model/final_model.pkl")
 
 
 # =====================================================
-# FEATURE ENGINEERING (MUST MATCH TRAINING)
+# FEATURE ENGINEERING (ONLY IF USED IN TRAINING)
 # =====================================================
 def feature_engineering(df):
 
     df = df.copy()
 
-    # Average monthly spend
     df["AvgMonthlySpend"] = df["TotalCharges"] / (df["tenure"] + 1)
-
-    # Long-term customer
     df["IsLongTerm"] = np.where(df["tenure"] > 24, 1, 0)
 
-    # Tenure groups
     df["TenureGroup"] = pd.cut(
         df["tenure"],
         bins=[0, 12, 24, 48, 72],
         labels=["0-1 Year", "1-2 Years", "2-4 Years", "4-6 Years"]
     )
 
-    # High charges
     df["HighMonthlyCharges"] = np.where(df["MonthlyCharges"] > 70, 1, 0)
 
-    # Total services
     service_cols = [
         "PhoneService",
         "OnlineSecurity",
@@ -49,19 +42,24 @@ def feature_engineering(df):
 
 
 # =====================================================
-# PREDICT FUNCTION
+# PREDICTION FUNCTION
 # =====================================================
 def predict_churn(input_data):
 
     df = pd.DataFrame([input_data])
 
-    # add engineered features
+    # feature engineering
     df = feature_engineering(df)
 
-    # preprocess
-    processed = preprocessor.transform(df)
+    # FORCE SAFE TYPES (IMPORTANT FIX)
+    for col in df.columns:
+        if df[col].dtype == "object":
+            df[col] = df[col].astype(str)
 
-    prediction = model.predict(processed)[0]
-    probability = model.predict_proba(processed)[0][1]
+    # replace NaN
+    df = df.fillna(0)
+
+    prediction = model.predict(df)[0]
+    probability = model.predict_proba(df)[0][1]
 
     return prediction, probability

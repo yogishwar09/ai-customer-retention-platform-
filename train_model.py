@@ -46,34 +46,37 @@ service_cols = [
 df["TotalServices"] = (df[service_cols] == "Yes").sum(axis=1)
 
 # =====================================================
-# SPLIT
+# SPLIT DATA
 # =====================================================
 X = df.drop("Churn", axis=1)
 y = df["Churn"]
 
+# =====================================================
+# COLUMN TYPES
+# =====================================================
 categorical_cols = X.select_dtypes(include=["object", "category"]).columns
 numeric_cols = X.select_dtypes(exclude=["object", "category"]).columns
 
 # =====================================================
 # PREPROCESSOR
 # =====================================================
-numeric_transformer = Pipeline([
+numeric_transformer = Pipeline(steps=[
     ("imputer", SimpleImputer(strategy="median")),
     ("scaler", StandardScaler())
 ])
 
-categorical_transformer = Pipeline([
+categorical_transformer = Pipeline(steps=[
     ("imputer", SimpleImputer(strategy="most_frequent")),
     ("encoder", OneHotEncoder(handle_unknown="ignore"))
 ])
 
-preprocessor = ColumnTransformer([
+preprocessor = ColumnTransformer(transformers=[
     ("num", numeric_transformer, numeric_cols),
     ("cat", categorical_transformer, categorical_cols)
 ])
 
 # =====================================================
-# MODEL PIPELINE (IMPORTANT FIX)
+# FINAL MODEL PIPELINE
 # =====================================================
 model = Pipeline(steps=[
     ("preprocessor", preprocessor),
@@ -87,7 +90,7 @@ model = Pipeline(steps=[
 ])
 
 # =====================================================
-# TRAIN
+# TRAIN TEST SPLIT
 # =====================================================
 X_train, X_test, y_train, y_test = train_test_split(
     X, y,
@@ -96,11 +99,14 @@ X_train, X_test, y_train, y_test = train_test_split(
     stratify=y
 )
 
+# =====================================================
+# TRAIN MODEL
+# =====================================================
 print("Training model...")
 model.fit(X_train, y_train)
 
 # =====================================================
-# SAVE FINAL MODEL ONLY
+# SAVE MODEL
 # =====================================================
 joblib.dump(model, "model/final_model.pkl")
 
