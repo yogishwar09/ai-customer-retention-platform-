@@ -1,51 +1,77 @@
 import streamlit as st
 import pandas as pd
-import joblib
 import os
+from utils.model_loader import get_model
 
 # =========================
-# LOAD MODEL
+# PAGE CONFIG
 # =========================
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "model", "churn_model.pkl")
+st.set_page_config(page_title="Batch Churn Prediction", layout="wide")
 
-model = joblib.load(MODEL_PATH)
+st.title("📦 Batch Churn Prediction System")
+st.markdown("Upload a CSV file to predict customer churn in bulk")
 
-st.title("📦 Batch Churn Prediction")
+# =========================
+# LOAD MODEL (SAFE)
+# =========================
+model = get_model()
 
-file = st.file_uploader("Upload CSV", type=["csv"])
+# =========================
+# FILE UPLOAD
+# =========================
+file = st.file_uploader("Upload CSV file", type=["csv"])
 
 if file is not None:
 
     df = pd.read_csv(file)
 
-    st.subheader("Input Data Preview")
+    st.subheader("📄 Input Data Preview")
     st.dataframe(df.head())
 
-    # =========================
-    # VALIDATION STEP (IMPORTANT)
-    # =========================
     try:
-        # Predict probabilities
-        probs = model.predict_proba(df)[:, 1]
-        preds = (probs > 0.5).astype(int)
+        # =========================
+        # SAFE PREDICTION
+        # =========================
 
+        # Keep only columns model expects (prevents crash)
+        expected_features = model.feature_names_in_ if hasattr(model, "feature_names_in_") else df.columns
+
+        # Align dataset with training features
+        df_model = df.reindex(columns=expected_features, fill_value=0)
+
+        # Predict
+        probs = model.predict_proba(df_model)[:, 1]
+        preds = (probs >= 0.5).astype(int)
+
+        # Add results
         df["Churn_Probability"] = probs
         df["Churn_Prediction"] = preds
 
-        st.subheader("Results")
+        # =========================
+        # OUTPUT
+        # =========================
+        st.subheader("📊 Prediction Results")
         st.dataframe(df)
 
+        # Download CSV
         csv = df.to_csv(index=False).encode("utf-8")
 
         st.download_button(
-            "Download Predictions",
-            csv,
-            "churn_results.csv",
-            "text/csv"
+            label="⬇ Download Results",
+            data=csv,
+            file_name="churn_predictions.csv",
+            mime="text/csv"
         )
 
     except Exception as e:
         st.error("❌ Batch prediction failed")
-        st.write("Error details:", str(e))
-        st.info("Make sure uploaded CSV has SAME columns as training data")
+
+        st.markdown("### Debug Info")
+        st.code(str(e))
+
+        st.info("""
+        Fix checklist:
+        - CSV must contain correct feature columns
+        - No missing required columns
+        - Same format as training dataset
+        """)

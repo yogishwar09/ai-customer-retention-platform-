@@ -5,7 +5,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
-import joblib
 
 # =====================================================
 # PAGE CONFIG
@@ -35,10 +34,6 @@ st.markdown("""
     box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
 }
 
-.metric-card h2 {
-    color: #4CAF50;
-}
-
 </style>
 """, unsafe_allow_html=True)
 
@@ -48,7 +43,7 @@ st.markdown("""
 st.markdown("""
 <div class='hero-box'>
     <h1>📊 Enterprise AI Churn Dashboard</h1>
-    <p>AI-powered analytics system for customer churn prediction and business intelligence</p>
+    <p>AI-powered analytics system for customer churn insights</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -66,7 +61,9 @@ def load_data():
 
 df = load_data()
 
-# Clean
+# =====================================================
+# CLEANING
+# =====================================================
 df = df.replace(" ", np.nan)
 df = df.fillna(0)
 
@@ -74,23 +71,21 @@ if "Churn" in df.columns:
     df["Churn"] = df["Churn"].map({"Yes": 1, "No": 0})
 
 # =====================================================
-# MODEL LOAD (OPTIONAL)
-# =====================================================
-MODEL_PATH = os.path.join("model", "churn_model.pkl")
-model = joblib.load(MODEL_PATH) if os.path.exists(MODEL_PATH) else None
-
-# =====================================================
-# FILTERS
+# SIDEBAR FILTERS
 # =====================================================
 st.sidebar.header("Filters")
 
 if "Contract" in df.columns:
     contracts = df["Contract"].dropna().unique()
-    selected = st.sidebar.multiselect("Contract Type", contracts, default=contracts)
+    selected = st.sidebar.multiselect(
+        "Contract Type",
+        contracts,
+        default=contracts
+    )
     df = df[df["Contract"].isin(selected)]
 
 # =====================================================
-# KPI SECTION
+# KPIs
 # =====================================================
 st.subheader("📌 Executive KPIs")
 
@@ -151,7 +146,7 @@ if "tenure" in df.columns and "Churn" in df.columns:
     st.pyplot(fig)
 
 # =====================================================
-# CORRELATION
+# CORRELATION HEATMAP
 # =====================================================
 st.subheader("🔗 Correlation Heatmap")
 
@@ -163,39 +158,17 @@ if num_df.shape[1] > 1:
     st.pyplot(fig)
 
 # =====================================================
-# FEATURE IMPORTANCE
-# =====================================================
-st.subheader("📌 Feature Importance")
-
-try:
-    if model is not None and hasattr(model, "feature_importances_"):
-        imp = pd.Series(model.feature_importances_)
-        imp = imp.sort_values(ascending=False)
-
-        fig, ax = plt.subplots()
-        imp.head(10).plot(kind="bar", ax=ax, color="purple")
-        st.pyplot(fig)
-    else:
-        st.info("Feature importance not available")
-except:
-    st.warning("Could not load feature importance")
-
-# =====================================================
 # REVENUE LOSS ANALYSIS
 # =====================================================
-st.subheader("💰 Revenue Impact Analysis")
+st.subheader("💰 Revenue Impact")
 
 if "Churn" in df.columns and "MonthlyCharges" in df.columns:
 
     churned = df[df["Churn"] == 1]
 
-    revenue_loss = churned["MonthlyCharges"].sum()
-    avg_loss = churned["MonthlyCharges"].mean()
-
     col1, col2 = st.columns(2)
-
-    col1.metric("Total Revenue Loss", f"${revenue_loss:,.2f}")
-    col2.metric("Avg Loss per Customer", f"${avg_loss:,.2f}")
+    col1.metric("Revenue Loss", f"${churned['MonthlyCharges'].sum():,.2f}")
+    col2.metric("Avg Loss/Customer", f"${churned['MonthlyCharges'].mean():.2f}")
 
 # =====================================================
 # RISK SEGMENTATION
@@ -220,8 +193,8 @@ st.subheader("🧠 Business Insights")
 st.success("Month-to-month contracts show highest churn risk")
 st.info("Low tenure customers are most vulnerable")
 st.warning("Higher charges increase churn probability")
-st.success("Long-term contracts improve retention significantly")
-st.info("Early engagement reduces churn drastically")
+st.success("Long-term contracts improve retention")
+st.info("Early engagement reduces churn")
 
 # =====================================================
 # RAW DATA
