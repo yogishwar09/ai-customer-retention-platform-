@@ -4,7 +4,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
-from utils.model_loader import get_model
+from utils.model_loader import get_model 
+import streamlit as st
+st.set_page_config(layout="wide")
 
 st.set_page_config(page_title="Dashboard", layout="wide")
 

@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
-from utils.model_loader import get_model
+from utils.model_loader import get_model 
+import streamlit as st
+st.set_page_config(layout="wide")
 
 st.set_page_config(page_title="Batch Prediction", layout="wide")
 

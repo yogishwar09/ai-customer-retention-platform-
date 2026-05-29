@@ -1,18 +1,18 @@
 import streamlit as st
 import os
 
-# =====================================================
+# =========================
 # CONFIG
-# =====================================================
+# =========================
 st.set_page_config(
     page_title="AI Churn SaaS Platform",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# =====================================================
-# LOAD CSS SAFELY
-# =====================================================
+# =========================
+# CSS LOADER
+# =========================
 def load_css():
     css_path = "styles/style.css"
     if os.path.exists(css_path):
@@ -21,88 +21,69 @@ def load_css():
 
 load_css()
 
-# =====================================================
-# SAFE LOGO HANDLER
-# =====================================================
-def show_logo():
-    logo_path = "assets/logo.png"
-    if os.path.exists(logo_path):
-        st.sidebar.image(logo_path, width=120)
-    else:
-        st.sidebar.markdown("### 📊 Churn AI Platform")
-
-show_logo()
-
-# =====================================================
-# SIDEBAR NAVIGATION (NO REDIRECTS)
-# =====================================================
-st.sidebar.title("Navigation")
+# =========================
+# SIDEBAR LOGIC
+# =========================
+st.sidebar.title("AI Churn Platform")
 
 menu = st.sidebar.radio(
-    "Go to",
+    "Navigation",
     ["Home", "Dashboard", "Single Prediction", "Batch Prediction"]
 )
 
 st.sidebar.markdown("---")
-st.sidebar.info("AI-powered churn prediction system")
+st.sidebar.info("ML-powered customer churn system")
 
-# =====================================================
-# HOME PAGE
-# =====================================================
+# =========================
+# HOME
+# =========================
 if menu == "Home":
+    st.title("📊 AI Customer Churn SaaS Platform")
+
     st.markdown("""
-    <div class="hero-box">
-        <h1>📊 AI Customer Churn SaaS Platform</h1>
-        <p>
-        Enterprise-grade machine learning system for predicting customer churn,
-        analyzing behavior, and improving retention strategy.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+    Enterprise ML system for:
+    - Churn prediction
+    - Customer analytics
+    - Batch prediction
+    """)
 
     col1, col2, col3 = st.columns(3)
-
-    col1.metric("System Status", "ACTIVE")
+    col1.metric("Status", "ACTIVE")
     col2.metric("Model", "READY")
-    col3.metric("Platform", "STABLE")
+    col3.metric("Version", "v1.0")
 
-    st.success("Select a module from the sidebar to continue.")
-
-# =====================================================
-# DASHBOARD PAGE
-# =====================================================
+# =========================
+# DASHBOARD
+# =========================
 elif menu == "Dashboard":
     try:
-        import pages.dashboard
+        from pages import dashboard
     except Exception as e:
-        st.error("Dashboard failed to load")
-        st.exception(e)
+        st.error("Dashboard error")
+        st.code(str(e))
 
-# =====================================================
-# SINGLE PREDICTION PAGE
-# =====================================================
+# =========================
+# SINGLE PREDICTION
+# =========================
 elif menu == "Single Prediction":
     try:
-        import pages.prediction
+        from pages import prediction
     except Exception as e:
-        st.error("Prediction page failed to load")
-        st.exception(e)
+        st.error("Prediction error")
+        st.code(str(e))
 
-# =====================================================
-# BATCH PREDICTION PAGE
-# =====================================================
+# =========================
+# BATCH PREDICTION
+# =========================
 elif menu == "Batch Prediction":
     try:
-        import pages.batch_prediction
+        from pages import batch_prediction
     except Exception as e:
-        st.error("Batch prediction page failed to load")
-        st.exception(e)
+        st.error("Batch prediction error")
+        st.code(str(e))
 
-# =====================================================
+# =========================
 # FOOTER
-# =====================================================
-st.markdown("""
-<div class="footer">
-    🚀 AI SaaS Platform | Built with Streamlit + Machine Learning
-</div>
-""", unsafe_allow_html=True)
+# =========================
+st.markdown("---")
+st.caption("🚀 Built with Streamlit + Machine Learning")
