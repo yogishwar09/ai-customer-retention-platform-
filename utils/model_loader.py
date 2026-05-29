@@ -1,23 +1,19 @@
 import joblib
 import os
+import streamlit as st
 
-# Path to your model
 MODEL_PATH = os.path.join("model", "churn_model.pkl")
 
-_model = None
-
+@st.cache_resource
 def get_model():
-    """
-    Loads model ONLY ONCE (prevents Streamlit reloading crashes)
-    """
-    global _model
+    try:
+        if not os.path.exists(MODEL_PATH):
+            return None
 
-    if _model is None:
-        try:
-            _model = joblib.load(MODEL_PATH)
-        except Exception as e:
-            raise RuntimeError(
-                "Model loading failed. Check compatibility of churn_model.pkl"
-            ) from e
+        model = joblib.load(MODEL_PATH)
+        return model
 
-    return _model
+    except Exception as e:
+        st.error("❌ Model loading failed")
+        st.code(str(e))
+        return None

@@ -1,203 +1,54 @@
 import streamlit as st
-import plotly.express as px
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
+from utils.model_loader import get_model
 
-# =====================================================
-# PAGE CONFIG
-# =====================================================
-st.set_page_config(page_title="Churn Dashboard", layout="wide")
+st.set_page_config(page_title="Dashboard", layout="wide")
 
-# =====================================================
-# CSS (SaaS STYLE UI)
-# =====================================================
-st.markdown("""
-<style>
+st.title("📊 Customer Churn Dashboard")
 
-.hero-box {
-    background: linear-gradient(90deg, #1f1f2e, #2c2c3d);
-    padding: 25px;
-    border-radius: 15px;
-    color: white;
-    margin-bottom: 20px;
-}
-
-.metric-card {
-    background-color: #1e1e2f;
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    color: white;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
-}
-
-</style>
-""", unsafe_allow_html=True)
-
-# =====================================================
-# TITLE
-# =====================================================
-st.markdown("""
-<div class='hero-box'>
-    <h1>📊 Enterprise AI Churn Dashboard</h1>
-    <p>AI-powered analytics system for customer churn insights</p>
-</div>
-""", unsafe_allow_html=True)
-
-# =====================================================
-# LOAD DATA (SAFE)
-# =====================================================
 DATA_PATH = os.path.join("data", "WA_Fn-UseC_-Telco-Customer-Churn.csv")
 
 @st.cache_data
 def load_data():
-    if not os.path.exists(DATA_PATH):
-        st.error("Dataset not found")
-        st.stop()
     return pd.read_csv(DATA_PATH)
 
 df = load_data()
 
-# =====================================================
-# CLEANING
-# =====================================================
-df = df.replace(" ", np.nan)
-df = df.fillna(0)
+df = df.replace(" ", np.nan).fillna(0)
 
 if "Churn" in df.columns:
     df["Churn"] = df["Churn"].map({"Yes": 1, "No": 0})
 
-# =====================================================
-# SIDEBAR FILTERS
-# =====================================================
-st.sidebar.header("Filters")
+model = get_model()
 
-if "Contract" in df.columns:
-    contracts = df["Contract"].dropna().unique()
-    selected = st.sidebar.multiselect(
-        "Contract Type",
-        contracts,
-        default=contracts
-    )
-    df = df[df["Contract"].isin(selected)]
-
-# =====================================================
-# KPIs
-# =====================================================
-st.subheader("📌 Executive KPIs")
-
-total_customers = len(df)
-churn_rate = df["Churn"].mean() * 100 if "Churn" in df.columns else 0
-active_customers = len(df[df["Churn"] == 0]) if "Churn" in df.columns else 0
+st.subheader("KPIs")
 
 col1, col2, col3 = st.columns(3)
-col1.metric("Total Customers", total_customers)
-col2.metric("Churn Rate (%)", f"{churn_rate:.2f}")
-col3.metric("Active Customers", active_customers)
 
-st.divider()
+col1.metric("Customers", len(df))
+col2.metric("Churn Rate", f"{df['Churn'].mean()*100:.2f}%")
+col3.metric("Active", len(df[df["Churn"] == 0]))
 
-# =====================================================
-# CHURN DISTRIBUTION
-# =====================================================
-st.subheader("📊 Churn Distribution")
+st.subheader("Churn Distribution")
 
-if "Churn" in df.columns:
-    fig, ax = plt.subplots()
-    df["Churn"].value_counts().plot(kind="bar", ax=ax, color=["green", "red"])
-    ax.set_xticklabels(["No Churn", "Churn"], rotation=0)
-    st.pyplot(fig)
+fig, ax = plt.subplots()
+df["Churn"].value_counts().plot(kind="bar", ax=ax)
+st.pyplot(fig)
 
-# =====================================================
-# CONTRACT ANALYSIS
-# =====================================================
-st.subheader("📄 Contract vs Churn")
+st.subheader("Contract Impact")
 
-if "Contract" in df.columns and "Churn" in df.columns:
-    contract_churn = df.groupby("Contract")["Churn"].mean() * 100
+fig, ax = plt.subplots()
+df.groupby("Contract")["Churn"].mean().plot(kind="bar", ax=ax)
+st.pyplot(fig)
 
-    fig, ax = plt.subplots()
-    contract_churn.plot(kind="bar", ax=ax, color="orange")
-    ax.set_ylabel("Churn %")
-    st.pyplot(fig)
+st.subheader("Correlation")
 
-# =====================================================
-# MONTHLY CHARGES
-# =====================================================
-st.subheader("💰 Monthly Charges Impact")
+num_df = df.select_dtypes(include=np.number)
 
-if "MonthlyCharges" in df.columns and "Churn" in df.columns:
-    fig, ax = plt.subplots()
-    sns.boxplot(x="Churn", y="MonthlyCharges", data=df, ax=ax)
-    ax.set_xticklabels(["No Churn", "Churn"])
-    st.pyplot(fig)
-
-# =====================================================
-# TENURE ANALYSIS
-# =====================================================
-st.subheader("⏳ Tenure Analysis")
-
-if "tenure" in df.columns and "Churn" in df.columns:
-    fig, ax = plt.subplots()
-    sns.histplot(data=df, x="tenure", hue="Churn", multiple="stack", ax=ax)
-    st.pyplot(fig)
-
-# =====================================================
-# CORRELATION HEATMAP
-# =====================================================
-st.subheader("🔗 Correlation Heatmap")
-
-num_df = df.select_dtypes(include=[np.number])
-
-if num_df.shape[1] > 1:
-    fig, ax = plt.subplots(figsize=(10, 6))
-    sns.heatmap(num_df.corr(), cmap="coolwarm", ax=ax)
-    st.pyplot(fig)
-
-# =====================================================
-# REVENUE LOSS ANALYSIS
-# =====================================================
-st.subheader("💰 Revenue Impact")
-
-if "Churn" in df.columns and "MonthlyCharges" in df.columns:
-
-    churned = df[df["Churn"] == 1]
-
-    col1, col2 = st.columns(2)
-    col1.metric("Revenue Loss", f"${churned['MonthlyCharges'].sum():,.2f}")
-    col2.metric("Avg Loss/Customer", f"${churned['MonthlyCharges'].mean():.2f}")
-
-# =====================================================
-# RISK SEGMENTATION
-# =====================================================
-st.subheader("🎯 Risk Segmentation")
-
-if "Churn" in df.columns:
-
-    df["Risk"] = df["Churn"].apply(lambda x: "High Risk" if x == 1 else "Low Risk")
-
-    risk = df["Risk"].value_counts().reset_index()
-    risk.columns = ["Risk", "Customers"]
-
-    fig = px.bar(risk, x="Risk", y="Customers", color="Risk")
-    st.plotly_chart(fig, use_container_width=True)
-
-# =====================================================
-# INSIGHTS
-# =====================================================
-st.subheader("🧠 Business Insights")
-
-st.success("Month-to-month contracts show highest churn risk")
-st.info("Low tenure customers are most vulnerable")
-st.warning("Higher charges increase churn probability")
-st.success("Long-term contracts improve retention")
-st.info("Early engagement reduces churn")
-
-# =====================================================
-# RAW DATA
-# =====================================================
-with st.expander("📄 View Data"):
-    st.dataframe(df)
+fig, ax = plt.subplots(figsize=(8, 5))
+sns.heatmap(num_df.corr(), ax=ax)
+st.pyplot(fig)
