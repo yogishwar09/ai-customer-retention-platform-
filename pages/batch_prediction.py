@@ -4,28 +4,24 @@ from utils.model_loader import get_model
 
 st.set_page_config(page_title="Batch Prediction", layout="wide")
 
-st.title("📦 Batch Churn Prediction")
+st.title("📦 Batch Churn Prediction System")
 
 model = get_model()
 
+if model is None:
+    st.stop()
+
 file = st.file_uploader("Upload CSV", type=["csv"])
 
-if file:
+if file is not None:
 
     df = pd.read_csv(file)
 
-    st.subheader("Preview")
+    st.subheader("Input Preview")
     st.dataframe(df.head())
 
-    if model is None:
-        st.error("Model not loaded")
-        st.stop()
-
     try:
-        expected_cols = model.feature_names_in_ if hasattr(model, "feature_names_in_") else df.columns
-        df_model = df.reindex(columns=expected_cols, fill_value=0)
-
-        probs = model.predict_proba(df_model)[:, 1]
+        probs = model.predict_proba(df)[:, 1]
         preds = (probs >= 0.5).astype(int)
 
         df["Churn_Probability"] = probs
