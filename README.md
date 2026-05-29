@@ -1,53 +1,40 @@
-# 📊 Customer Churn Prediction & Analytics System
+# 📊 AI Customer Churn SaaS Platform
 
-An end-to-end **Machine Learning + Business Intelligence SaaS-style application** that predicts customer churn and delivers actionable insights using telecom customer data.
-
-This project simulates a real-world **AI product used in enterprise decision-making systems**.
+An end-to-end Machine Learning powered SaaS application that predicts customer churn, analyzes business patterns, and provides actionable insights for telecom retention strategy.
 
 ---
 
-## 🚀 Live Demo
-👉 Add your Streamlit Cloud URL here
+## 🚀 Live Features
 
----
-
-## 📌 Project Overview
-
-Customer churn is one of the most critical problems in telecom industries. This system helps businesses:
-
-- Predict whether a customer will churn
-- Analyze key behavioral patterns
-- Identify high-risk customers early
-- Improve customer retention strategies using AI
-
-The system combines:
-✔ Machine Learning  
-✔ Data Engineering  
-✔ Business Intelligence  
-✔ Interactive Web Dashboard  
+- 🔮 Real-time Customer Churn Prediction
+- 📦 Batch Prediction using CSV upload
+- 📊 Interactive Analytics Dashboard
+- 💰 Revenue Loss Estimation
+- 🎯 Customer Risk Segmentation
+- 📈 Business Intelligence Insights
+- 🎨 SaaS-style UI with modern dashboard design
 
 ---
 
 ## 🧠 Problem Statement
 
-Telecom companies lose significant revenue due to customer churn. The goal of this project is to:
+Telecom companies lose a significant portion of revenue due to customer churn.  
+This system helps businesses:
 
-- Predict churn before it happens
-- Understand key factors influencing churn
-- Help businesses take preventive actions
+- Identify customers likely to churn
+- Understand behavioral patterns
+- Reduce revenue loss through predictive analytics
 
 ---
 
 ## ⚙️ Tech Stack
 
-- Python  
-- Streamlit (UI framework)  
-- Pandas, NumPy (Data processing)  
-- Scikit-learn (ML pipeline)  
-- XGBoost (Model)  
-- Imbalanced-learn (SMOTE)  
-- Matplotlib, Seaborn (Visualization)  
-- Joblib (Model serialization)
+- Python 🐍
+- Streamlit 🎈
+- Scikit-learn 🤖
+- Pandas & NumPy 📊
+- Plotly & Matplotlib 📈
+- Seaborn 🎨
 
 ---
 

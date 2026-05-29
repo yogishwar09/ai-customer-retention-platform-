@@ -1,170 +1,108 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
-import joblib
 import os
 
 # =====================================================
-# PAGE CONFIG
+# CONFIG
 # =====================================================
 st.set_page_config(
-    page_title="Customer Churn AI Platform",
-    layout="wide"
+    page_title="AI Churn SaaS Platform",
+    layout="wide",
+    initial_sidebar_state="expanded"
 )
 
-st.title("📊 Customer Churn Prediction & Analytics System")
-st.markdown("AI-powered SaaS platform for predicting and analyzing telecom customer churn")
+# =====================================================
+# LOAD CSS SAFELY
+# =====================================================
+def load_css():
+    css_path = "styles/style.css"
+    if os.path.exists(css_path):
+        with open(css_path) as f:
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+load_css()
 
 # =====================================================
-# LOAD MODEL + PREPROCESSOR (SAFE)
+# SAFE LOGO HANDLER
 # =====================================================
-MODEL_PATH = os.path.join("model", "churn_model.pkl")
-PREPROCESSOR_PATH = os.path.join("model", "preprocessor.pkl")
+def show_logo():
+    logo_path = "assets/logo.png"
+    if os.path.exists(logo_path):
+        st.sidebar.image(logo_path, width=120)
+    else:
+        st.sidebar.markdown("### 📊 Churn AI Platform")
 
-@st.cache_resource
-def load_assets():
-    if not os.path.exists(MODEL_PATH):
-        st.error("❌ Model file not found")
-        st.stop()
-
-    if not os.path.exists(PREPROCESSOR_PATH):
-        st.error("❌ Preprocessor file not found")
-        st.stop()
-
-    model = joblib.load(MODEL_PATH)
-    preprocessor = joblib.load(PREPROCESSOR_PATH)
-
-    return model, preprocessor
-
-model, preprocessor = load_assets()
+show_logo()
 
 # =====================================================
-# SIDEBAR NAVIGATION
+# SIDEBAR NAVIGATION (NO REDIRECTS)
 # =====================================================
-st.sidebar.title("📌 Navigation")
+st.sidebar.title("Navigation")
 
-page = st.sidebar.radio(
+menu = st.sidebar.radio(
     "Go to",
-    ["🏠 Home", "🔮 Single Prediction", "📦 Batch Prediction", "📊 System Info"]
+    ["Home", "Dashboard", "Single Prediction", "Batch Prediction"]
 )
+
+st.sidebar.markdown("---")
+st.sidebar.info("AI-powered churn prediction system")
 
 # =====================================================
 # HOME PAGE
 # =====================================================
-if page == "🏠 Home":
-
-    st.subheader("Welcome to AI Churn Intelligence Platform 🚀")
-
+if menu == "Home":
     st.markdown("""
-    This system helps telecom businesses:
-
-    ✔ Predict customer churn using Machine Learning  
-    ✔ Analyze customer behavior patterns  
-    ✔ Identify high-risk customers early  
-    ✔ Improve customer retention strategy  
-    """)
+    <div class="hero-box">
+        <h1>📊 AI Customer Churn SaaS Platform</h1>
+        <p>
+        Enterprise-grade machine learning system for predicting customer churn,
+        analyzing behavior, and improving retention strategy.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
     col1, col2, col3 = st.columns(3)
 
-    col1.metric("Model", "XGBoost")
-    col2.metric("Pipeline", "Preprocess + ML")
-    col3.metric("Status", "Active")
+    col1.metric("System Status", "ACTIVE")
+    col2.metric("Model", "READY")
+    col3.metric("Platform", "STABLE")
 
-    st.info("Use sidebar to navigate between prediction tools and system info.")
-
-# =====================================================
-# SINGLE PREDICTION (UPGRADED UI)
-# =====================================================
-elif page == "🔮 Single Prediction":
-
-    st.subheader("🔮 Customer Churn Prediction")
-
-    st.markdown("Enter customer details to estimate churn probability")
-
-    col1, col2 = st.columns(2)
-
-    with col1:
-        tenure = st.number_input("📅 Tenure (months)", 0, 100, 12)
-        monthly_charges = st.number_input("💰 Monthly Charges", 0.0, 200.0, 70.0)
-
-    with col2:
-        total_charges = st.number_input("🧾 Total Charges", 0.0, 10000.0, 1000.0)
-
-    input_df = pd.DataFrame([{
-        "tenure": tenure,
-        "MonthlyCharges": monthly_charges,
-        "TotalCharges": total_charges
-    }])
-
-    st.divider()
-
-    if st.button("🚀 Predict Churn", use_container_width=True):
-
-        try:
-            processed = preprocessor.transform(input_df)
-
-            prediction = model.predict(processed)[0]
-            probability = model.predict_proba(processed)[0][1]
-
-            st.subheader("📊 Prediction Result")
-
-            col1, col2 = st.columns(2)
-
-            col1.metric("Churn Probability", f"{probability:.2f}")
-            col2.metric("Prediction", "Churn ❌" if prediction == 1 else "No Churn ✅")
-
-            if probability > 0.7:
-                st.error("⚠️ High Risk Customer - Immediate attention required")
-            elif probability > 0.4:
-                st.warning("⚠️ Medium Risk Customer")
-            else:
-                st.success("✅ Low Risk Customer")
-
-        except Exception as e:
-            st.error(f"Prediction Error: {str(e)}")
+    st.success("Select a module from the sidebar to continue.")
 
 # =====================================================
-# BATCH PREDICTION INFO PAGE
+# DASHBOARD PAGE
 # =====================================================
-elif page == "📦 Batch Prediction":
-
-    st.subheader("📦 Batch Prediction System")
-
-    st.markdown("""
-    ### How to use:
-    1. Go to batch prediction page  
-    2. Upload CSV file with customer data  
-    3. Run prediction  
-    4. Download results  
-
-    👉 Full batch processing available in `pages/batch_prediction.py`
-    """)
-
-    st.info("Upload multiple customers for bulk churn prediction")
+elif menu == "Dashboard":
+    try:
+        import pages.dashboard
+    except Exception as e:
+        st.error("Dashboard failed to load")
+        st.exception(e)
 
 # =====================================================
-# SYSTEM INFO PAGE
+# SINGLE PREDICTION PAGE
 # =====================================================
-elif page == "📊 System Info":
+elif menu == "Single Prediction":
+    try:
+        import pages.prediction
+    except Exception as e:
+        st.error("Prediction page failed to load")
+        st.exception(e)
 
-    st.subheader("📊 Model Information")
+# =====================================================
+# BATCH PREDICTION PAGE
+# =====================================================
+elif menu == "Batch Prediction":
+    try:
+        import pages.batch_prediction
+    except Exception as e:
+        st.error("Batch prediction page failed to load")
+        st.exception(e)
 
-    st.markdown("""
-    ✔ Model Type: XGBoost Classifier  
-    ✔ Preprocessing: ColumnTransformer Pipeline  
-    ✔ Handling: SMOTE for imbalance  
-    ✔ Deployment: Streamlit Cloud Ready  
-    """)
-
-    st.markdown("### Features Used")
-
-    st.markdown("""
-    - Tenure  
-    - Monthly Charges  
-    - Total Charges  
-    - Contract Type  
-    - Internet Services  
-    - Customer Demographics  
-    """)
-
-    st.success("System is fully operational 🚀")
+# =====================================================
+# FOOTER
+# =====================================================
+st.markdown("""
+<div class="footer">
+    🚀 AI SaaS Platform | Built with Streamlit + Machine Learning
+</div>
+""", unsafe_allow_html=True)

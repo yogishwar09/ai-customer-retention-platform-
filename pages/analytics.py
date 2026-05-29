@@ -9,18 +9,15 @@ import joblib
 # =====================================================
 # PAGE CONFIG
 # =====================================================
-st.set_page_config(page_title="Churn Analytics", layout="wide")
+st.set_page_config(page_title="Churn Analytics Dashboard", layout="wide")
 
 st.title("📊 Customer Churn Analytics Dashboard")
-st.markdown("End-to-end business intelligence system for telecom churn analysis")
+st.markdown("AI-powered business intelligence system for telecom churn analysis")
 
 # =====================================================
 # DATA PATH
 # =====================================================
-DATA_PATH = os.path.join(
-    "data",
-    "WA_Fn-UseC_-Telco-Customer-Churn.csv"
-)
+DATA_PATH = os.path.join("data", "WA_Fn-UseC_-Telco-Customer-Churn.csv")
 
 # =====================================================
 # LOAD DATA
@@ -29,15 +26,13 @@ DATA_PATH = os.path.join(
 def load_data():
     if not os.path.exists(DATA_PATH):
         st.error("❌ Dataset not found")
-        st.code(DATA_PATH)
         st.stop()
-
     return pd.read_csv(DATA_PATH)
 
 df = load_data()
 
 # =====================================================
-# CLEANING
+# CLEAN DATA
 # =====================================================
 df = df.replace(" ", np.nan)
 df = df.fillna(0)
@@ -48,11 +43,11 @@ if "Churn" in df.columns:
 st.success("✅ Dataset loaded successfully!")
 
 # =====================================================
-# LOAD MODEL (OPTIONAL FOR FEATURE IMPORTANCE)
+# LOAD MODEL (OPTIONAL)
 # =====================================================
 MODEL_PATH = os.path.join("model", "churn_model.pkl")
-
 model = None
+
 if os.path.exists(MODEL_PATH):
     model = joblib.load(MODEL_PATH)
 
@@ -62,7 +57,7 @@ if os.path.exists(MODEL_PATH):
 st.sidebar.header("🔍 Filters")
 
 if "Contract" in df.columns:
-    contracts = df["Contract"].unique()
+    contracts = df["Contract"].dropna().unique()
     selected_contracts = st.sidebar.multiselect(
         "Contract Type",
         contracts,
@@ -71,15 +66,19 @@ if "Contract" in df.columns:
     df = df[df["Contract"].isin(selected_contracts)]
 
 # =====================================================
-# KPI SECTION (EXECUTIVE DASHBOARD)
+# KPI SECTION
 # =====================================================
 st.subheader("📌 Executive KPIs")
 
-col1, col2, col3 = st.columns(3)
+total_customers = len(df)
 
-col1.metric("Total Customers", len(df))
-col2.metric("Churn Rate (%)", f"{df['Churn'].mean()*100:.2f}" if "Churn" in df else "N/A")
-col3.metric("Active Customers", len(df[df["Churn"] == 0]) if "Churn" in df else "N/A")
+churn_rate = df["Churn"].mean() * 100 if "Churn" in df.columns else 0
+active_customers = len(df[df["Churn"] == 0]) if "Churn" in df.columns else 0
+
+col1, col2, col3 = st.columns(3)
+col1.metric("Total Customers", total_customers)
+col2.metric("Churn Rate (%)", f"{churn_rate:.2f}")
+col3.metric("Active Customers", active_customers)
 
 st.divider()
 
@@ -90,8 +89,9 @@ st.subheader("📊 Churn Distribution")
 
 if "Churn" in df.columns:
     fig, ax = plt.subplots()
-    df["Churn"].value_counts().plot(kind="bar", ax=ax)
+    df["Churn"].value_counts().plot(kind="bar", color=["green", "red"], ax=ax)
     ax.set_xticklabels(["No Churn", "Churn"], rotation=0)
+    ax.set_ylabel("Count")
     st.pyplot(fig)
 
 # =====================================================
@@ -103,7 +103,7 @@ if "Contract" in df.columns and "Churn" in df.columns:
     contract_churn = df.groupby("Contract")["Churn"].mean() * 100
 
     fig, ax = plt.subplots()
-    contract_churn.plot(kind="bar", ax=ax)
+    contract_churn.plot(kind="bar", ax=ax, color="orange")
     ax.set_ylabel("Churn Rate (%)")
     st.pyplot(fig)
 
@@ -141,36 +141,37 @@ if numeric_df.shape[1] > 1:
     st.pyplot(fig)
 
 # =====================================================
-# FEATURE IMPORTANCE (IF MODEL EXISTS)
+# FEATURE IMPORTANCE
 # =====================================================
 st.subheader("📌 Feature Importance (Model Insights)")
 
-if model is not None and hasattr(model, "feature_importances_"):
-    importances = pd.Series(model.feature_importances_)
-    importances = importances.sort_values(ascending=False)
+try:
+    if model is not None and hasattr(model, "feature_importances_"):
+        importances = pd.Series(model.feature_importances_)
+        importances = importances.sort_values(ascending=False)
 
-    fig, ax = plt.subplots()
-    importances.head(10).plot(kind="bar", ax=ax)
-    ax.set_title("Top 10 Important Features")
-    st.pyplot(fig)
-else:
-    st.info("Feature importance not available (model does not support it)")
+        fig, ax = plt.subplots()
+        importances.head(10).plot(kind="bar", ax=ax, color="purple")
+        ax.set_title("Top 10 Important Features")
+        st.pyplot(fig)
+    else:
+        st.info("Feature importance not available for this model.")
+except:
+    st.warning("Could not load feature importance safely.")
 
 # =====================================================
-# BUSINESS INSIGHTS
+# BUSINESS INSIGHTS (UPGRADED UI)
 # =====================================================
 st.subheader("🧠 Business Insights")
 
-st.markdown("""
-✔ Month-to-month contracts have the highest churn risk  
-✔ Customers with low tenure are most likely to leave  
-✔ Higher monthly charges increase churn probability  
-✔ Retention strategies should focus on early-stage customers  
-✔ Long-term contracts significantly reduce churn  
-""")
+st.success("✔ Month-to-month contracts have highest churn risk")
+st.info("✔ Customers with low tenure are most likely to leave")
+st.warning("✔ Higher monthly charges increase churn probability")
+st.success("✔ Long-term contracts significantly reduce churn")
+st.info("✔ Early customer engagement improves retention")
 
 # =====================================================
-# DATA PREVIEW (OPTIONAL)
+# RAW DATA
 # =====================================================
 with st.expander("📄 View Raw Data"):
     st.dataframe(df)
