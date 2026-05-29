@@ -1,9 +1,6 @@
 import streamlit as st
 import pandas as pd
-from utils.model_loader import get_model 
-import streamlit as st
-st.set_page_config(layout="wide")
-
+from utils.model_loader import get_model
 
 st.set_page_config(page_title="Churn Prediction", layout="wide")
 
@@ -32,8 +29,11 @@ with st.form("form"):
     movies = st.selectbox("Streaming Movies", ["Yes", "No"])
 
     contract = st.selectbox("Contract", ["Month-to-month", "One year", "Two year"])
-    payment = st.selectbox("Payment Method",
-                           ["Electronic check", "Mailed check", "Bank transfer", "Credit card"])
+
+    payment = st.selectbox(
+        "Payment Method",
+        ["Electronic check", "Mailed check", "Bank transfer", "Credit card"]
+    )
 
     paperless = st.selectbox("Paperless Billing", ["Yes", "No"])
 
@@ -45,7 +45,7 @@ with st.form("form"):
 if submit:
 
     if model is None:
-        st.error("Model not loaded")
+        st.error("Model not loaded. Check deployment.")
         st.stop()
 
     input_data = pd.DataFrame([{
@@ -77,9 +77,9 @@ if submit:
         st.metric("Churn Probability", f"{prob*100:.2f}%")
 
         if pred == 1:
-            st.error("HIGH RISK CUSTOMER")
+            st.error("🔴 HIGH RISK CUSTOMER")
         else:
-            st.success("LOW RISK CUSTOMER")
+            st.success("🟢 LOW RISK CUSTOMER")
 
     except Exception as e:
         st.error("Prediction error")
