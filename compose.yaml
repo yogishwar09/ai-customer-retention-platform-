@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    ports: ["8501:8501"]
+    volumes: [retentioniq-data:/data]
+    env_file: [{path: .env, required: false}]
+  api:
+    build: .
+    command: ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    ports: ["8000:8000"]
+    volumes: [retentioniq-data:/data]
+    env_file: [{path: .env, required: false}]
+    depends_on: [app]
+volumes:
+  retentioniq-data:

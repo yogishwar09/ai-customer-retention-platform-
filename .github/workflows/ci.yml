@@ -1,0 +1,54 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - name: Install (clean environment from pinned files)
+        run: |
+          pip install -r requirements-dev.txt
+          pip install -e . --no-deps
+      - name: Lint
+        run: ruff check src api ui app_pages scripts tests app.py
+      - name: Validate playbooks against the data contract
+        run: python -c "from retentioniq import config; from retentioniq.decisioning.policy import validate_playbooks; validate_playbooks(config.playbooks())"
+      - name: Tests (unit, contract, model regression, API, UI smoke)
+        run: pytest -q
+      - name: Dependency vulnerability scan
+        run: pip install pip-audit && pip-audit -r requirements-api.txt || echo "::warning::pip-audit reported findings"
+
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t retentioniq:ci .
+      - name: Smoke test API container
+        run: |
+          docker run -d --name api -p 8000:8000 retentioniq:ci uvicorn api.main:app --host 0.0.0.0 --port 8000
+          for i in $(seq 1 60); do curl -fs localhost:8000/health && exit 0; sleep 3; done
+          docker logs api; exit 1

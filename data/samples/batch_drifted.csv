@@ -1,0 +1,401 @@
+customerID,gender,SeniorCitizen,Partner,Dependents,tenure,PhoneService,MultipleLines,InternetService,OnlineSecurity,OnlineBackup,DeviceProtection,TechSupport,StreamingTV,StreamingMovies,Contract,PaperlessBilling,PaymentMethod,MonthlyCharges,TotalCharges
+DRF-00001,Female,0,No,No,4,Yes,Yes,DSL,Yes,No,Yes,Yes,No,No,Month-to-month,Yes,Mailed check,71.52,286.08
+DRF-00002,Female,0,Yes,No,31,Yes,Yes,Fiber optic,No,Yes,Yes,Yes,Yes,Yes,One year,Yes,Credit card (automatic),135.89,4212.59
+DRF-00003,Female,0,No,No,6,Yes,No,DSL,Yes,No,No,Yes,No,No,Month-to-month,No,Mailed check,64.99,389.94
+DRF-00004,Female,0,Yes,Yes,1,Yes,No,DSL,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,53.05,53.05
+DRF-00005,Male,0,No,No,0,Yes,No,Fiber optic,No,Yes,No,No,No,No,Month-to-month,Yes,Electronic check,92.3,
+DRF-00006,Female,0,Yes,Yes,5,Yes,Yes,Fiber optic,No,No,No,No,Yes,No,Month-to-month,Yes,Electronic check,104.44,522.2
+DRF-00007,Male,0,Yes,Yes,15,Yes,No,Fiber optic,Yes,Yes,No,No,No,Yes,Month-to-month,Yes,Electronic check,111.64,1674.6
+DRF-00008,Male,0,Yes,No,23,Yes,Yes,Fiber optic,Yes,No,Yes,No,No,Yes,Month-to-month,No,Electronic check,106.35,2446.05
+DRF-00009,Female,0,No,No,6,Yes,No,DSL,No,No,Yes,No,No,Yes,Month-to-month,Yes,Electronic check,72.29,433.74
+DRF-00010,Female,0,Yes,No,32,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Bank transfer (automatic),22.29,713.28
+DRF-00011,Female,0,No,No,5,Yes,Yes,Fiber optic,No,No,Yes,No,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),117.19,585.95
+DRF-00012,Female,0,No,No,1,Yes,No,DSL,No,No,No,No,No,No,Month-to-month,No,Electronic check,55.97,55.97
+DRF-00013,Female,0,No,No,1,Yes,No,Fiber optic,No,No,Yes,No,No,No,Month-to-month,Yes,Mailed check,90.38,90.38
+DRF-00014,Male,0,No,No,6,Yes,Yes,Fiber optic,No,Yes,No,No,Yes,Yes,Month-to-month,Yes,Electronic check,113.42,680.52
+DRF-00015,Male,0,No,No,10,Yes,No,DSL,No,No,No,Yes,No,No,Month-to-month,Yes,Credit card (automatic),60.86,608.6
+DRF-00016,Female,0,Yes,Yes,26,Yes,Yes,DSL,Yes,No,Yes,Yes,Yes,No,Two year,Yes,Mailed check,87.25,2268.5
+DRF-00017,Male,0,Yes,No,0,Yes,No,Fiber optic,No,No,Yes,No,No,No,Month-to-month,No,Electronic check,92.87,
+DRF-00018,Female,0,Yes,Yes,32,Yes,Yes,DSL,Yes,No,Yes,Yes,No,No,Two year,Yes,Credit card (automatic),73.63,2356.16
+DRF-00019,Male,0,Yes,No,32,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Electronic check,28.06,897.92
+DRF-00020,Male,1,No,No,5,Yes,Yes,DSL,Yes,Yes,No,No,No,No,Month-to-month,No,Bank transfer (automatic),70.07,350.35
+DRF-00021,Male,0,No,No,14,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,22.66,317.24
+DRF-00022,Male,0,No,No,0,Yes,No,DSL,No,No,No,Yes,No,No,Month-to-month,No,Mailed check,62.92,
+DRF-00023,Male,0,No,No,4,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Mailed check,23.01,92.04
+DRF-00024,Female,0,No,No,5,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,23.55,117.75
+DRF-00025,Female,1,No,No,29,No,No phone service,DSL,No,Yes,Yes,No,Yes,Yes,Two year,Yes,Bank transfer (automatic),62.63,1816.27
+DRF-00026,Female,1,No,No,4,Yes,Yes,DSL,Yes,No,No,No,No,No,Month-to-month,Yes,Electronic check,68.85,275.4
+DRF-00027,Female,1,Yes,No,8,Yes,Yes,Fiber optic,No,No,Yes,No,Yes,No,Month-to-month,No,Electronic check,108.61,868.88
+DRF-00028,Male,0,Yes,Yes,13,Yes,No,DSL,Yes,No,No,No,No,Yes,Month-to-month,Yes,Mailed check,69.05,897.65
+DRF-00029,Female,0,No,Yes,1,Yes,No,DSL,No,No,No,Yes,No,No,Month-to-month,Yes,Mailed check,60.23,60.23
+DRF-00030,Male,0,Yes,No,31,Yes,Yes,Fiber optic,No,Yes,Yes,No,Yes,No,One year,Yes,Bank transfer (automatic),114.81,3559.11
+DRF-00031,Female,0,No,Yes,4,Yes,Yes,Fiber optic,Yes,No,No,No,No,No,Month-to-month,Yes,Electronic check,95.45,381.8
+DRF-00032,Male,1,Yes,No,32,Yes,Yes,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Bank transfer (automatic),135.31,4329.92
+DRF-00033,Female,0,Yes,Yes,18,Yes,Yes,DSL,Yes,Yes,Yes,No,Yes,No,One year,Yes,Credit card (automatic),91.32,1643.76
+DRF-00034,Female,0,Yes,Yes,32,Yes,Yes,DSL,Yes,Yes,Yes,Yes,No,No,Two year,No,Mailed check,85.88,2748.16
+DRF-00035,Female,0,No,No,18,Yes,Yes,DSL,Yes,No,Yes,Yes,No,Yes,Month-to-month,Yes,Bank transfer (automatic),84.58,1522.44
+DRF-00036,Female,1,No,No,12,Yes,Yes,Fiber optic,Yes,Yes,No,No,Yes,Yes,Month-to-month,Yes,Mailed check,123.81,1485.72
+DRF-00037,Male,1,Yes,No,1,Yes,Yes,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Mailed check,86.88,86.88
+DRF-00038,Male,0,No,No,32,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Credit card (automatic),24.0,768.0
+DRF-00039,Female,0,No,No,27,Yes,Yes,Fiber optic,Yes,Yes,Yes,No,Yes,Yes,Month-to-month,No,Credit card (automatic),122.46,3306.42
+DRF-00040,Male,0,Yes,Yes,23,Yes,No,DSL,Yes,No,No,Yes,Yes,Yes,One year,Yes,Bank transfer (automatic),87.92,2022.16
+DRF-00041,Male,1,Yes,No,10,Yes,Yes,Fiber optic,No,No,No,No,No,Yes,Month-to-month,No,Electronic check,100.25,1002.5
+DRF-00042,Female,0,Yes,Yes,9,Yes,No,DSL,Yes,Yes,Yes,Yes,No,No,Month-to-month,Yes,Mailed check,76.64,689.76
+DRF-00043,Male,0,No,No,5,Yes,No,Fiber optic,No,No,No,No,Yes,No,Month-to-month,Yes,Electronic check,100.61,503.05
+DRF-00044,Male,0,No,No,4,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Mailed check,23.82,95.28
+DRF-00045,Male,1,Yes,Yes,21,Yes,No,Fiber optic,No,Yes,No,No,Yes,No,One year,Yes,Bank transfer (automatic),96.1,2018.1
+DRF-00046,Female,1,No,No,9,Yes,Yes,Fiber optic,Yes,No,No,No,No,No,Month-to-month,Yes,Electronic check,94.12,847.08
+DRF-00047,Female,0,Yes,Yes,16,Yes,No,DSL,Yes,Yes,Yes,No,No,No,One year,Yes,Mailed check,72.09,1153.44
+DRF-00048,Male,0,No,No,12,Yes,Yes,Fiber optic,No,Yes,No,No,Yes,No,Month-to-month,Yes,Credit card (automatic),110.16,1321.92
+DRF-00049,Male,0,No,No,1,Yes,No,DSL,No,Yes,No,No,No,No,Month-to-month,Yes,Electronic check,57.87,57.87
+DRF-00050,Female,0,Yes,No,32,Yes,Yes,Fiber optic,Yes,Yes,Yes,No,Yes,No,Two year,No,Bank transfer (automatic),121.62,3891.84
+DRF-00051,Female,0,No,No,0,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,24.45,
+DRF-00052,Male,0,Yes,Yes,29,Yes,Yes,Fiber optic,No,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Bank transfer (automatic),136.49,3958.21
+DRF-00053,Male,0,No,No,19,Yes,No,Fiber optic,No,Yes,No,Yes,Yes,Yes,Month-to-month,No,Electronic check,119.62,2272.78
+DRF-00054,Female,0,No,No,8,Yes,Yes,Fiber optic,No,Yes,Yes,No,No,Yes,Month-to-month,Yes,Credit card (automatic),112.1,896.8
+DRF-00055,Female,1,Yes,No,6,Yes,No,DSL,Yes,No,Yes,Yes,Yes,Yes,One year,Yes,Electronic check,90.49,542.94
+DRF-00056,Female,0,Yes,Yes,25,Yes,Yes,Fiber optic,No,Yes,No,No,Yes,Yes,Month-to-month,Yes,Electronic check,119.83,2995.75
+DRF-00057,Male,1,Yes,No,8,Yes,No,Fiber optic,No,Yes,No,No,No,No,Month-to-month,Yes,Electronic check,85.0,680.0
+DRF-00058,Male,0,No,No,17,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Mailed check,81.25,1381.25
+DRF-00059,Male,0,No,No,32,No,No phone service,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),77.58,2482.56
+DRF-00060,Female,1,Yes,No,13,Yes,No,Fiber optic,Yes,No,No,No,No,No,Month-to-month,Yes,Bank transfer (automatic),84.95,1104.35
+DRF-00061,Male,1,Yes,No,32,Yes,Yes,DSL,Yes,Yes,Yes,No,Yes,Yes,Two year,Yes,Credit card (automatic),99.11,3171.52
+DRF-00062,Female,0,No,No,1,Yes,Yes,Fiber optic,No,No,No,No,Yes,No,Month-to-month,Yes,Electronic check,97.35,97.35
+DRF-00063,Male,0,No,No,0,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,No,Electronic check,82.75,
+DRF-00064,Male,1,No,No,6,Yes,Yes,Fiber optic,No,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,127.35,764.1
+DRF-00065,Male,0,Yes,No,31,Yes,Yes,DSL,No,Yes,Yes,Yes,Yes,Yes,Two year,No,Credit card (automatic),101.8,3155.8
+DRF-00066,Male,0,No,No,6,Yes,No,DSL,No,No,No,Yes,No,No,Month-to-month,No,Bank transfer (automatic),61.45,368.7
+DRF-00067,Male,0,Yes,Yes,12,Yes,Yes,DSL,Yes,No,No,Yes,Yes,No,Month-to-month,No,Bank transfer (automatic),83.05,996.6
+DRF-00068,Male,1,Yes,No,22,Yes,Yes,Fiber optic,No,No,Yes,No,No,Yes,Month-to-month,Yes,Credit card (automatic),111.68,2456.96
+DRF-00069,Male,1,Yes,Yes,32,Yes,No,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,Two year,Yes,Credit card (automatic),127.56,4081.92
+DRF-00070,Female,0,No,No,0,Yes,No,DSL,No,No,No,No,No,No,Month-to-month,Yes,Credit card (automatic),53.04,
+DRF-00071,Male,1,No,No,4,Yes,Yes,DSL,Yes,Yes,No,No,No,No,Month-to-month,No,Bank transfer (automatic),72.89,291.56
+DRF-00072,Male,0,No,No,0,Yes,No,DSL,No,No,Yes,Yes,No,No,Month-to-month,No,Mailed check,62.63,
+DRF-00073,Female,0,No,No,16,Yes,No,DSL,Yes,Yes,Yes,Yes,No,Yes,One year,Yes,Mailed check,89.64,1434.24
+DRF-00074,Female,0,Yes,No,22,Yes,Yes,Fiber optic,Yes,Yes,No,Yes,Yes,Yes,Month-to-month,No,Electronic check,134.07,2949.54
+DRF-00075,Female,0,Yes,No,24,Yes,Yes,Fiber optic,No,Yes,Yes,Yes,Yes,Yes,One year,No,Electronic check,133.4,3201.6
+DRF-00076,Female,1,Yes,No,32,Yes,Yes,Fiber optic,Yes,No,No,No,No,No,Two year,No,Bank transfer (automatic),96.98,3103.36
+DRF-00077,Male,0,No,No,1,Yes,No,Fiber optic,No,No,No,No,Yes,No,Month-to-month,Yes,Electronic check,93.27,93.27
+DRF-00078,Female,0,No,No,22,Yes,Yes,Fiber optic,No,Yes,Yes,No,Yes,Yes,Month-to-month,Yes,Electronic check,121.07,2663.54
+DRF-00079,Male,0,Yes,Yes,32,Yes,Yes,Fiber optic,No,Yes,No,No,Yes,No,Month-to-month,Yes,Electronic check,101.22,3239.04
+DRF-00080,Female,0,Yes,No,5,Yes,Yes,Fiber optic,No,No,Yes,No,Yes,Yes,Month-to-month,Yes,Electronic check,111.78,558.9
+DRF-00081,Female,0,Yes,No,22,Yes,No,DSL,No,Yes,Yes,No,No,Yes,One year,Yes,Electronic check,78.19,1720.18
+DRF-00082,Female,1,Yes,No,13,Yes,No,Fiber optic,Yes,No,No,No,No,No,Month-to-month,Yes,Bank transfer (automatic),90.55,1177.15
+DRF-00083,Female,0,Yes,Yes,22,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Bank transfer (automatic),23.0,506.0
+DRF-00084,Male,0,No,No,0,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,24.3,
+DRF-00085,Female,0,No,Yes,0,Yes,No,Fiber optic,Yes,No,No,No,No,No,Month-to-month,Yes,Mailed check,84.94,
+DRF-00086,Male,0,Yes,No,22,Yes,Yes,DSL,No,Yes,Yes,No,No,Yes,One year,Yes,Credit card (automatic),81.05,1783.1
+DRF-00087,Female,0,No,No,1,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,85.33,85.33
+DRF-00088,Male,0,No,No,1,Yes,Yes,Fiber optic,No,No,No,No,No,Yes,Month-to-month,Yes,Electronic check,95.89,95.89
+DRF-00089,Female,0,Yes,Yes,17,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,23.1,392.7
+DRF-00090,Female,0,Yes,No,32,Yes,No,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,No,Credit card (automatic),103.73,3319.36
+DRF-00091,Male,0,Yes,No,0,Yes,Yes,Fiber optic,No,No,No,Yes,No,No,Month-to-month,Yes,Bank transfer (automatic),94.55,
+DRF-00092,Female,0,Yes,Yes,11,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Credit card (automatic),29.41,323.51
+DRF-00093,Male,0,No,Yes,1,Yes,No,DSL,No,No,No,Yes,No,No,Month-to-month,Yes,Bank transfer (automatic),59.18,59.18
+DRF-00094,Male,0,Yes,Yes,24,Yes,No,Fiber optic,No,Yes,No,Yes,Yes,No,Month-to-month,Yes,Electronic check,109.81,2635.44
+DRF-00095,Female,0,Yes,Yes,0,No,No phone service,DSL,No,No,No,No,No,No,Month-to-month,Yes,Mailed check,29.0,
+DRF-00096,Female,1,Yes,No,0,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,80.84,
+DRF-00097,Female,0,Yes,No,1,Yes,No,DSL,Yes,Yes,No,No,No,No,Month-to-month,Yes,Mailed check,66.21,66.21
+DRF-00098,Female,0,Yes,Yes,18,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Electronic check,25.88,465.84
+DRF-00099,Female,0,Yes,Yes,3,Yes,Yes,DSL,No,Yes,No,No,No,No,Month-to-month,No,Electronic check,64.17,192.51
+DRF-00100,Female,0,Yes,Yes,26,Yes,No,DSL,Yes,No,No,No,Yes,Yes,One year,Yes,Bank transfer (automatic),84.5,2197.0
+DRF-00101,Female,1,No,No,7,Yes,No,Fiber optic,Yes,No,Yes,Yes,No,Yes,Month-to-month,Yes,Mailed check,111.42,779.94
+DRF-00102,Female,0,No,No,1,Yes,Yes,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Credit card (automatic),90.87,90.87
+DRF-00103,Female,0,Yes,Yes,4,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Credit card (automatic),25.28,101.12
+DRF-00104,Female,1,Yes,No,11,Yes,No,Fiber optic,No,No,Yes,No,Yes,No,Month-to-month,Yes,Credit card (automatic),100.25,1102.75
+DRF-00105,Male,0,Yes,No,22,Yes,No,Fiber optic,Yes,No,No,No,Yes,No,Month-to-month,No,Electronic check,102.64,2258.08
+DRF-00106,Female,0,No,No,1,Yes,No,Fiber optic,No,No,Yes,No,Yes,No,Month-to-month,Yes,Electronic check,102.79,102.79
+DRF-00107,Female,1,Yes,No,5,Yes,No,DSL,Yes,No,Yes,Yes,Yes,Yes,One year,Yes,Electronic check,95.07,475.35
+DRF-00108,Male,0,Yes,No,22,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Electronic check,23.47,516.34
+DRF-00109,Male,1,No,No,9,Yes,Yes,Fiber optic,No,Yes,Yes,No,Yes,Yes,Month-to-month,Yes,Electronic check,123.98,1115.82
+DRF-00110,Male,0,No,No,18,No,No phone service,DSL,Yes,Yes,No,Yes,Yes,No,Month-to-month,Yes,Credit card (automatic),60.19,1083.42
+DRF-00111,Female,0,No,No,3,Yes,No,DSL,Yes,No,No,Yes,Yes,No,Month-to-month,Yes,Electronic check,78.43,235.29
+DRF-00112,Female,0,Yes,No,11,Yes,No,DSL,No,Yes,Yes,No,Yes,Yes,Two year,Yes,Credit card (automatic),84.52,929.72
+DRF-00113,Female,0,Yes,Yes,19,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Mailed check,30.41,577.79
+DRF-00114,Male,0,No,Yes,2,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,24.1,48.2
+DRF-00115,Female,1,Yes,No,14,Yes,Yes,Fiber optic,No,No,Yes,No,Yes,No,One year,Yes,Electronic check,106.77,1494.78
+DRF-00116,Male,0,Yes,No,1,Yes,No,DSL,No,No,No,Yes,No,No,Month-to-month,No,Mailed check,59.28,59.28
+DRF-00117,Male,0,No,No,31,Yes,Yes,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,One year,Yes,Bank transfer (automatic),137.85,4273.35
+DRF-00118,Female,0,No,No,0,Yes,No,DSL,No,No,No,No,No,No,Month-to-month,Yes,Mailed check,53.49,
+DRF-00119,Female,0,No,No,32,Yes,Yes,DSL,Yes,Yes,No,No,No,No,Two year,No,Bank transfer (automatic),73.75,2360.0
+DRF-00120,Female,0,Yes,Yes,10,Yes,No,DSL,Yes,No,No,Yes,No,No,Month-to-month,No,Electronic check,66.73,667.3
+DRF-00121,Male,0,No,No,0,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Credit card (automatic),22.4,
+DRF-00122,Male,0,No,Yes,32,Yes,Yes,Fiber optic,Yes,Yes,No,No,No,No,One year,Yes,Credit card (automatic),98.64,3156.48
+DRF-00123,Female,0,No,No,15,Yes,No,DSL,No,No,Yes,No,No,Yes,Month-to-month,Yes,Electronic check,72.3,1084.5
+DRF-00124,Male,1,No,No,0,No,No phone service,DSL,No,Yes,Yes,No,No,Yes,Month-to-month,Yes,Electronic check,53.55,
+DRF-00125,Male,0,Yes,No,12,No,No phone service,DSL,No,No,Yes,No,Yes,No,Month-to-month,Yes,Credit card (automatic),45.23,542.76
+DRF-00126,Female,0,No,No,5,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Bank transfer (automatic),23.13,115.65
+DRF-00127,Female,1,Yes,No,27,Yes,Yes,Fiber optic,No,Yes,Yes,No,Yes,Yes,One year,Yes,Credit card (automatic),128.8,3477.6
+DRF-00128,Male,0,No,No,2,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Electronic check,24.67,49.34
+DRF-00129,Female,0,No,No,32,Yes,Yes,Fiber optic,Yes,Yes,Yes,No,Yes,Yes,Two year,Yes,Credit card (automatic),122.64,3924.48
+DRF-00130,Female,0,No,No,18,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,28.62,515.16
+DRF-00131,Female,0,Yes,Yes,22,Yes,No,Fiber optic,Yes,Yes,No,No,No,No,Month-to-month,Yes,Bank transfer (automatic),94.33,2075.26
+DRF-00132,Female,0,No,No,11,No,No phone service,DSL,No,No,Yes,No,Yes,Yes,Month-to-month,Yes,Credit card (automatic),59.44,653.84
+DRF-00133,Male,0,No,No,0,Yes,No,DSL,Yes,No,No,No,No,No,Month-to-month,No,Electronic check,53.83,
+DRF-00134,Male,0,No,No,15,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,22.81,342.15
+DRF-00135,Female,0,Yes,No,18,No,No phone service,DSL,Yes,No,Yes,No,Yes,Yes,Month-to-month,No,Electronic check,68.88,1239.84
+DRF-00136,Female,0,Yes,No,22,No,No phone service,DSL,Yes,No,No,No,Yes,No,Month-to-month,No,Bank transfer (automatic),48.84,1074.48
+DRF-00137,Male,0,No,No,20,Yes,Yes,Fiber optic,Yes,Yes,Yes,No,No,Yes,Month-to-month,Yes,Electronic check,112.58,2251.6
+DRF-00138,Female,0,No,No,3,Yes,No,DSL,Yes,Yes,Yes,No,No,No,Month-to-month,No,Electronic check,73.93,221.79
+DRF-00139,Male,0,Yes,Yes,32,Yes,Yes,Fiber optic,No,No,Yes,No,No,Yes,Month-to-month,Yes,Credit card (automatic),103.69,3318.08
+DRF-00140,Female,0,Yes,No,10,Yes,Yes,DSL,No,No,No,Yes,Yes,Yes,Month-to-month,Yes,Credit card (automatic),91.03,910.3
+DRF-00141,Male,1,Yes,No,31,Yes,Yes,Fiber optic,No,Yes,Yes,No,Yes,Yes,Month-to-month,Yes,Electronic check,124.78,3868.18
+DRF-00142,Female,0,Yes,Yes,21,Yes,No,DSL,Yes,No,No,Yes,No,No,Month-to-month,No,Bank transfer (automatic),68.98,1448.58
+DRF-00143,Female,0,Yes,Yes,27,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,No,Mailed check,106.78,2883.06
+DRF-00144,Male,0,Yes,No,29,Yes,Yes,DSL,Yes,No,Yes,Yes,No,Yes,Two year,No,Bank transfer (automatic),94.06,2727.74
+DRF-00145,Male,0,No,No,3,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Bank transfer (automatic),23.28,69.84
+DRF-00146,Male,0,No,No,17,Yes,Yes,Fiber optic,No,No,No,No,No,Yes,Month-to-month,Yes,Electronic check,100.13,1702.21
+DRF-00147,Male,1,No,No,9,Yes,No,Fiber optic,No,No,No,No,Yes,Yes,Month-to-month,No,Electronic check,101.48,913.32
+DRF-00148,Female,1,No,No,4,Yes,No,Fiber optic,No,No,No,No,Yes,Yes,Month-to-month,No,Bank transfer (automatic),107.68,430.72
+DRF-00149,Female,0,Yes,Yes,32,Yes,Yes,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,Month-to-month,No,Mailed check,123.51,3952.32
+DRF-00150,Female,0,No,No,2,Yes,Yes,Fiber optic,No,No,No,Yes,Yes,Yes,Month-to-month,Yes,Mailed check,116.18,232.36
+DRF-00151,Male,0,Yes,Yes,32,Yes,Yes,Fiber optic,Yes,Yes,No,No,Yes,Yes,Month-to-month,Yes,Electronic check,126.25,4040.0
+DRF-00152,Male,0,No,No,0,Yes,No,Fiber optic,No,No,No,No,Yes,Yes,Month-to-month,Yes,Electronic check,107.39,
+DRF-00153,Male,0,No,No,9,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Mailed check,26.97,242.73
+DRF-00154,Female,0,No,No,9,Yes,No,DSL,No,Yes,Yes,No,Yes,No,One year,No,Bank transfer (automatic),77.27,695.43
+DRF-00155,Male,0,Yes,No,15,Yes,No,DSL,Yes,Yes,Yes,No,No,No,Month-to-month,No,Mailed check,68.44,1026.6
+DRF-00156,Female,0,No,No,24,Yes,No,Fiber optic,No,Yes,Yes,No,Yes,Yes,One year,Yes,Mailed check,112.89,2709.36
+DRF-00157,Female,0,Yes,Yes,21,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,No,Month-to-month,No,Mailed check,96.61,2028.81
+DRF-00158,Male,0,No,No,0,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Mailed check,85.0,
+DRF-00159,Female,0,Yes,Yes,2,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,23.01,46.02
+DRF-00160,Female,0,Yes,Yes,18,Yes,Yes,Fiber optic,No,Yes,Yes,Yes,No,No,Month-to-month,Yes,Electronic check,107.0,1926.0
+DRF-00161,Male,0,No,No,2,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,24.08,48.16
+DRF-00162,Male,0,No,No,28,Yes,Yes,Fiber optic,Yes,Yes,No,Yes,No,Yes,One year,No,Electronic check,120.84,3383.52
+DRF-00163,Female,0,Yes,No,9,Yes,No,Fiber optic,Yes,No,No,No,No,No,Month-to-month,Yes,Electronic check,89.7,807.3
+DRF-00164,Female,0,Yes,No,24,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Mailed check,30.02,720.48
+DRF-00165,Female,0,No,No,25,Yes,Yes,Fiber optic,No,No,No,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,121.89,3047.25
+DRF-00166,Female,0,Yes,Yes,19,Yes,No,DSL,No,No,No,No,Yes,No,Month-to-month,No,Electronic check,67.25,1277.75
+DRF-00167,Male,0,Yes,Yes,31,Yes,No,DSL,Yes,No,Yes,Yes,No,Yes,Two year,Yes,Credit card (automatic),84.71,2626.01
+DRF-00168,Male,0,Yes,Yes,9,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Bank transfer (automatic),23.34,210.06
+DRF-00169,Female,0,Yes,Yes,0,Yes,No,Fiber optic,No,No,No,No,No,Yes,Month-to-month,Yes,Electronic check,97.5,
+DRF-00170,Male,0,No,No,0,Yes,No,Fiber optic,No,No,No,No,Yes,Yes,Month-to-month,Yes,Electronic check,106.54,
+DRF-00171,Male,0,Yes,Yes,1,Yes,No,DSL,Yes,Yes,No,Yes,No,No,Two year,No,Mailed check,72.76,72.76
+DRF-00172,Female,0,No,No,1,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,24.43,24.43
+DRF-00173,Male,0,No,No,2,Yes,No,DSL,Yes,No,No,No,No,No,Month-to-month,Yes,Electronic check,57.35,114.7
+DRF-00174,Female,0,Yes,Yes,9,Yes,No,Fiber optic,No,No,No,No,No,Yes,Month-to-month,Yes,Electronic check,93.27,839.43
+DRF-00175,Male,0,Yes,Yes,18,Yes,No,DSL,Yes,No,No,Yes,No,Yes,One year,No,Credit card (automatic),78.52,1413.36
+DRF-00176,Female,0,Yes,No,25,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Bank transfer (automatic),24.84,621.0
+DRF-00177,Female,0,No,No,1,Yes,No,Fiber optic,No,No,No,No,Yes,No,Month-to-month,Yes,Mailed check,91.86,91.86
+DRF-00178,Female,0,Yes,Yes,30,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Bank transfer (automatic),24.0,720.0
+DRF-00179,Female,0,No,No,6,Yes,No,Fiber optic,No,Yes,No,No,No,Yes,Month-to-month,Yes,Electronic check,99.01,594.06
+DRF-00180,Male,0,No,No,16,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,Yes,Mailed check,21.49,343.84
+DRF-00181,Female,0,Yes,No,27,Yes,Yes,Fiber optic,Yes,Yes,No,Yes,Yes,Yes,Two year,Yes,Credit card (automatic),133.75,3611.25
+DRF-00182,Male,0,Yes,No,27,Yes,Yes,Fiber optic,No,Yes,Yes,No,Yes,Yes,Month-to-month,Yes,Electronic check,117.72,3178.44
+DRF-00183,Male,0,No,No,29,Yes,No,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,No,Credit card (automatic),127.04,3684.16
+DRF-00184,Female,0,Yes,No,12,Yes,No,Fiber optic,Yes,No,No,No,Yes,Yes,Month-to-month,Yes,Mailed check,108.73,1304.76
+DRF-00185,Female,1,No,No,22,Yes,Yes,DSL,Yes,No,Yes,No,No,No,Two year,No,Bank transfer (automatic),67.84,1492.48
+DRF-00186,Male,0,Yes,Yes,32,Yes,Yes,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),137.62,4403.84
+DRF-00187,Female,0,No,No,6,Yes,No,DSL,Yes,Yes,No,Yes,No,Yes,Month-to-month,No,Bank transfer (automatic),79.06,474.36
+DRF-00188,Male,0,No,Yes,4,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Mailed check,21.9,87.6
+DRF-00189,Male,0,No,No,9,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Mailed check,23.62,212.58
+DRF-00190,Female,0,No,No,5,Yes,No,Fiber optic,No,No,No,No,Yes,No,Month-to-month,Yes,Mailed check,98.35,491.75
+DRF-00191,Male,0,No,Yes,9,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,24.12,217.08
+DRF-00192,Male,0,No,No,10,Yes,No,DSL,No,Yes,No,No,No,No,Month-to-month,Yes,Mailed check,59.27,592.7
+DRF-00193,Female,0,No,No,0,Yes,Yes,Fiber optic,No,Yes,No,No,No,No,Month-to-month,Yes,Mailed check,97.7,
+DRF-00194,Male,1,No,No,0,Yes,No,DSL,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,52.69,
+DRF-00195,Female,0,Yes,Yes,32,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,No,Credit card (automatic),104.82,3354.24
+DRF-00196,Male,0,No,Yes,1,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Mailed check,24.19,24.19
+DRF-00197,Female,0,Yes,Yes,23,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Mailed check,27.54,633.42
+DRF-00198,Male,0,Yes,No,2,Yes,Yes,Fiber optic,No,No,No,Yes,No,No,Month-to-month,Yes,Bank transfer (automatic),96.94,193.88
+DRF-00199,Male,0,No,No,31,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,No,Mailed check,106.75,3309.25
+DRF-00200,Female,0,Yes,No,29,No,No phone service,DSL,Yes,No,Yes,Yes,No,Yes,Month-to-month,No,Electronic check,58.2,1687.8
+DRF-00201,Female,0,No,No,5,Yes,No,Fiber optic,No,No,No,No,No,Yes,Month-to-month,Yes,Bank transfer (automatic),92.02,460.1
+DRF-00202,Male,0,Yes,No,22,Yes,No,DSL,No,Yes,Yes,No,Yes,Yes,Two year,No,Electronic check,85.16,1873.52
+DRF-00203,Male,0,Yes,No,10,Yes,Yes,DSL,No,No,Yes,No,No,No,Month-to-month,No,Credit card (automatic),65.1,651.0
+DRF-00204,Female,0,No,No,4,Yes,Yes,Fiber optic,No,No,No,No,No,No,Month-to-month,No,Mailed check,86.87,347.48
+DRF-00205,Female,0,No,No,18,Yes,No,Fiber optic,No,Yes,Yes,No,No,No,One year,No,Electronic check,92.62,1667.16
+DRF-00206,Female,0,No,No,15,Yes,No,DSL,No,No,Yes,No,No,Yes,Month-to-month,Yes,Electronic check,72.17,1082.55
+DRF-00207,Female,0,No,No,19,Yes,No,DSL,Yes,Yes,No,Yes,No,Yes,One year,Yes,Mailed check,81.95,1557.05
+DRF-00208,Female,0,No,No,0,Yes,No,DSL,No,Yes,No,No,No,No,Month-to-month,Yes,Electronic check,57.18,
+DRF-00209,Male,1,No,No,1,Yes,Yes,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,86.97,86.97
+DRF-00210,Female,0,No,No,12,Yes,No,DSL,No,Yes,Yes,Yes,Yes,Yes,Month-to-month,No,Mailed check,88.43,1061.16
+DRF-00211,Male,0,No,No,0,Yes,No,DSL,Yes,No,No,No,No,No,Month-to-month,Yes,Electronic check,58.45,
+DRF-00212,Female,0,Yes,Yes,1,No,No phone service,DSL,Yes,No,No,No,No,No,Month-to-month,No,Credit card (automatic),35.77,35.77
+DRF-00213,Female,0,No,No,0,Yes,Yes,Fiber optic,No,No,No,No,Yes,Yes,Month-to-month,Yes,Electronic check,113.65,
+DRF-00214,Female,0,Yes,No,23,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Bank transfer (automatic),22.44,516.12
+DRF-00215,Male,0,No,No,26,Yes,No,DSL,No,Yes,No,Yes,No,Yes,One year,Yes,Electronic check,72.18,1876.68
+DRF-00216,Female,0,Yes,No,27,Yes,Yes,Fiber optic,No,No,Yes,Yes,Yes,No,Month-to-month,No,Electronic check,108.21,2921.67
+DRF-00217,Male,0,No,No,2,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Electronic check,23.06,46.12
+DRF-00218,Male,0,No,No,5,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Credit card (automatic),22.1,110.5
+DRF-00219,Male,0,No,No,16,Yes,No,DSL,Yes,Yes,Yes,No,No,No,Month-to-month,No,Mailed check,75.66,1210.56
+DRF-00220,Male,1,Yes,No,2,Yes,Yes,Fiber optic,No,No,No,No,No,No,Month-to-month,No,Electronic check,87.96,175.92
+DRF-00221,Male,0,Yes,No,20,Yes,No,Fiber optic,Yes,No,Yes,Yes,No,No,One year,Yes,Bank transfer (automatic),101.9,2038.0
+DRF-00222,Male,0,Yes,Yes,24,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Mailed check,23.59,566.16
+DRF-00223,Male,1,Yes,No,26,Yes,Yes,DSL,No,Yes,Yes,No,Yes,No,Month-to-month,Yes,Credit card (automatic),83.85,2180.1
+DRF-00224,Female,0,No,No,9,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Bank transfer (automatic),29.96,269.64
+DRF-00225,Female,0,No,No,3,Yes,Yes,DSL,Yes,Yes,Yes,No,No,No,Month-to-month,Yes,Bank transfer (automatic),78.01,234.03
+DRF-00226,Female,1,Yes,No,1,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,81.41,81.41
+DRF-00227,Female,0,Yes,No,30,Yes,No,DSL,No,Yes,No,No,No,Yes,Two year,Yes,Credit card (automatic),74.56,2236.8
+DRF-00228,Female,0,Yes,Yes,25,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Bank transfer (automatic),22.6,565.0
+DRF-00229,Male,0,No,No,4,No,No phone service,DSL,Yes,No,No,No,No,No,Month-to-month,No,Mailed check,33.75,135.0
+DRF-00230,Female,0,No,No,17,Yes,Yes,DSL,Yes,No,No,No,Yes,No,One year,No,Bank transfer (automatic),76.91,1307.47
+DRF-00231,Female,0,No,No,32,Yes,Yes,DSL,Yes,Yes,No,Yes,No,No,Two year,Yes,Mailed check,76.99,2463.68
+DRF-00232,Female,0,No,No,3,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Mailed check,23.0,69.0
+DRF-00233,Female,0,No,No,6,Yes,Yes,DSL,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,58.32,349.92
+DRF-00234,Female,0,No,No,1,Yes,No,Fiber optic,No,No,Yes,No,No,No,Month-to-month,Yes,Electronic check,91.14,91.14
+DRF-00235,Female,0,Yes,No,22,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Bank transfer (automatic),23.82,524.04
+DRF-00236,Female,0,Yes,Yes,7,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Electronic check,23.81,166.67
+DRF-00237,Female,0,No,No,5,Yes,No,Fiber optic,No,No,No,No,No,Yes,Month-to-month,Yes,Bank transfer (automatic),95.7,478.5
+DRF-00238,Female,0,No,No,4,Yes,Yes,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,84.88,339.52
+DRF-00239,Male,0,No,Yes,10,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Electronic check,22.5,225.0
+DRF-00240,Female,0,Yes,Yes,22,Yes,No,DSL,Yes,No,Yes,Yes,Yes,No,Month-to-month,No,Bank transfer (automatic),79.63,1751.86
+DRF-00241,Female,0,No,No,2,Yes,No,Fiber optic,No,Yes,No,No,Yes,No,Month-to-month,Yes,Mailed check,102.79,205.58
+DRF-00242,Male,0,No,No,31,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,23.3,722.3
+DRF-00243,Female,0,Yes,No,0,Yes,No,DSL,Yes,Yes,No,No,No,No,Month-to-month,Yes,Mailed check,64.88,
+DRF-00244,Male,0,No,No,4,Yes,No,DSL,Yes,No,No,Yes,No,Yes,Month-to-month,No,Mailed check,76.84,307.36
+DRF-00245,Male,1,No,No,10,Yes,Yes,Fiber optic,No,Yes,Yes,No,Yes,Yes,Month-to-month,No,Mailed check,129.0,1290.0
+DRF-00246,Female,1,No,No,6,Yes,Yes,Fiber optic,No,No,No,No,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),114.0,684.0
+DRF-00247,Female,0,No,No,18,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Credit card (automatic),24.36,438.48
+DRF-00248,Female,0,No,No,9,Yes,No,DSL,No,No,No,No,No,Yes,Month-to-month,Yes,Electronic check,67.15,604.35
+DRF-00249,Female,1,Yes,Yes,4,Yes,Yes,Fiber optic,No,No,Yes,No,No,No,Month-to-month,Yes,Credit card (automatic),93.73,374.92
+DRF-00250,Female,0,No,No,15,No,No phone service,DSL,Yes,No,No,No,No,No,Two year,No,Bank transfer (automatic),35.45,531.75
+DRF-00251,Female,0,Yes,Yes,32,Yes,Yes,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Electronic check,135.71,4342.72
+DRF-00252,Male,0,No,No,9,Yes,No,Fiber optic,No,No,Yes,No,No,No,Month-to-month,Yes,Electronic check,87.32,785.88
+DRF-00253,Male,0,No,No,0,Yes,Yes,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,91.04,
+DRF-00254,Male,0,Yes,No,23,No,No phone service,DSL,No,Yes,No,No,No,No,Month-to-month,Yes,Credit card (automatic),35.57,818.11
+DRF-00255,Male,1,No,No,2,No,No phone service,DSL,No,Yes,No,No,Yes,Yes,Month-to-month,Yes,Credit card (automatic),62.14,124.28
+DRF-00256,Male,0,No,Yes,2,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,23.23,46.46
+DRF-00257,Female,0,No,No,21,Yes,No,DSL,Yes,Yes,No,Yes,No,No,Month-to-month,Yes,Mailed check,72.04,1512.84
+DRF-00258,Female,0,No,No,9,Yes,Yes,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,83.64,752.76
+DRF-00259,Female,0,No,No,1,Yes,No,DSL,No,No,No,No,No,No,Month-to-month,No,Mailed check,50.2,50.2
+DRF-00260,Female,0,No,No,0,Yes,No,DSL,No,No,No,No,No,Yes,Month-to-month,Yes,Electronic check,64.26,
+DRF-00261,Male,1,Yes,No,31,Yes,Yes,Fiber optic,Yes,Yes,No,No,No,No,Month-to-month,No,Bank transfer (automatic),96.26,2984.06
+DRF-00262,Male,0,Yes,Yes,12,Yes,No,DSL,Yes,Yes,No,Yes,No,Yes,Month-to-month,Yes,Credit card (automatic),82.77,993.24
+DRF-00263,Male,0,Yes,No,5,No,No phone service,DSL,No,No,No,Yes,Yes,No,Month-to-month,No,Mailed check,46.89,234.45
+DRF-00264,Female,0,No,No,30,No,No phone service,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,No,Credit card (automatic),77.53,2325.9
+DRF-00265,Male,0,Yes,No,14,Yes,Yes,Fiber optic,Yes,Yes,No,Yes,No,No,Month-to-month,Yes,Credit card (automatic),110.19,1542.66
+DRF-00266,Male,0,No,No,19,Yes,Yes,Fiber optic,No,No,No,Yes,Yes,Yes,One year,Yes,Electronic check,121.56,2309.64
+DRF-00267,Female,0,No,No,2,Yes,Yes,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,91.95,183.9
+DRF-00268,Male,0,No,Yes,21,Yes,Yes,Fiber optic,Yes,Yes,Yes,No,Yes,Yes,One year,Yes,Credit card (automatic),124.08,2605.68
+DRF-00269,Male,0,No,No,30,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Bank transfer (automatic),29.18,875.4
+DRF-00270,Female,0,No,No,16,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Bank transfer (automatic),28.52,456.32
+DRF-00271,Female,1,No,No,0,Yes,No,Fiber optic,No,No,No,No,Yes,No,Month-to-month,No,Mailed check,100.09,
+DRF-00272,Male,0,Yes,Yes,2,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,31.39,62.78
+DRF-00273,Male,0,No,No,1,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,25.59,25.59
+DRF-00274,Female,1,Yes,No,20,Yes,Yes,Fiber optic,No,No,No,Yes,Yes,Yes,One year,No,Electronic check,118.46,2369.2
+DRF-00275,Male,0,Yes,Yes,6,Yes,No,DSL,No,No,No,No,Yes,Yes,One year,Yes,Electronic check,74.69,448.14
+DRF-00276,Female,0,No,No,25,Yes,No,DSL,No,No,No,No,No,No,One year,No,Bank transfer (automatic),50.66,1266.5
+DRF-00277,Male,1,No,No,6,Yes,Yes,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,88.48,530.88
+DRF-00278,Male,0,Yes,Yes,7,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Bank transfer (automatic),22.6,158.2
+DRF-00279,Female,0,Yes,No,32,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Credit card (automatic),23.59,754.88
+DRF-00280,Male,0,No,No,6,Yes,No,Fiber optic,No,No,No,No,No,Yes,Month-to-month,Yes,Electronic check,91.8,550.8
+DRF-00281,Female,0,No,Yes,3,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Bank transfer (automatic),22.9,68.7
+DRF-00282,Male,0,No,No,14,Yes,No,DSL,Yes,No,Yes,No,No,No,Two year,Yes,Mailed check,63.94,895.16
+DRF-00283,Female,1,Yes,No,29,Yes,No,DSL,Yes,No,Yes,Yes,Yes,Yes,Month-to-month,Yes,Credit card (automatic),94.16,2730.64
+DRF-00284,Male,0,No,No,31,Yes,Yes,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Bank transfer (automatic),131.77,4084.87
+DRF-00285,Female,0,No,No,0,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,22.33,
+DRF-00286,Female,0,Yes,No,23,No,No phone service,DSL,No,Yes,No,Yes,Yes,Yes,Month-to-month,Yes,Credit card (automatic),69.12,1589.76
+DRF-00287,Female,1,No,No,2,Yes,No,Fiber optic,No,No,No,No,No,Yes,Month-to-month,No,Electronic check,92.38,184.76
+DRF-00288,Male,0,Yes,Yes,9,Yes,No,DSL,No,No,Yes,No,No,No,Month-to-month,Yes,Electronic check,60.63,545.67
+DRF-00289,Female,0,No,No,13,No,No phone service,DSL,No,Yes,No,No,No,No,Month-to-month,Yes,Electronic check,35.73,464.49
+DRF-00290,Male,0,Yes,Yes,8,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,78.75,630.0
+DRF-00291,Female,0,Yes,No,3,Yes,No,Fiber optic,No,No,No,No,No,Yes,Month-to-month,Yes,Electronic check,92.64,277.92
+DRF-00292,Male,0,Yes,Yes,13,No,No phone service,DSL,Yes,No,Yes,Yes,Yes,No,Month-to-month,No,Mailed check,62.1,807.3
+DRF-00293,Female,0,Yes,Yes,23,Yes,Yes,Fiber optic,No,Yes,Yes,No,Yes,No,One year,Yes,Credit card (automatic),114.06,2623.38
+DRF-00294,Male,0,Yes,Yes,9,Yes,No,DSL,Yes,No,Yes,Yes,Yes,Yes,Month-to-month,No,Electronic check,96.8,871.2
+DRF-00295,Female,1,No,No,24,Yes,Yes,DSL,No,Yes,No,Yes,Yes,No,One year,No,Mailed check,82.64,1983.36
+DRF-00296,Male,0,No,No,6,No,No phone service,DSL,No,No,No,Yes,No,No,Month-to-month,Yes,Electronic check,35.57,213.42
+DRF-00297,Male,1,Yes,No,2,Yes,Yes,DSL,Yes,Yes,No,Yes,No,No,Month-to-month,No,Electronic check,74.99,149.98
+DRF-00298,Female,0,Yes,Yes,0,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,23.61,
+DRF-00299,Female,0,Yes,No,5,Yes,No,DSL,Yes,No,No,Yes,No,No,Month-to-month,No,Bank transfer (automatic),61.82,309.1
+DRF-00300,Male,0,No,No,9,No,No phone service,DSL,Yes,No,Yes,No,No,No,Month-to-month,No,Mailed check,41.32,371.88
+DRF-00301,Male,0,No,No,9,Yes,No,DSL,No,Yes,No,Yes,No,No,Month-to-month,Yes,Credit card (automatic),66.8,601.2
+DRF-00302,Male,0,Yes,Yes,11,Yes,Yes,Fiber optic,Yes,Yes,No,Yes,Yes,No,Month-to-month,No,Electronic check,122.3,1345.3
+DRF-00303,Male,0,No,No,1,Yes,Yes,Fiber optic,Yes,No,No,No,No,No,Month-to-month,Yes,Electronic check,96.8,96.8
+DRF-00304,Male,0,No,No,3,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Mailed check,24.76,74.28
+DRF-00305,Female,0,No,No,8,No,No phone service,DSL,Yes,Yes,No,Yes,No,No,One year,Yes,Mailed check,46.06,368.48
+DRF-00306,Female,0,No,No,7,Yes,Yes,DSL,Yes,No,No,No,No,Yes,Month-to-month,Yes,Bank transfer (automatic),76.5,535.5
+DRF-00307,Male,0,No,No,0,Yes,Yes,Fiber optic,No,Yes,No,No,No,No,Month-to-month,Yes,Electronic check,94.84,
+DRF-00308,Male,0,No,No,8,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Mailed check,23.02,184.16
+DRF-00309,Female,0,Yes,Yes,4,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Mailed check,23.53,94.12
+DRF-00310,Male,0,No,No,16,Yes,Yes,Fiber optic,No,Yes,Yes,No,No,Yes,Month-to-month,Yes,Credit card (automatic),116.87,1869.92
+DRF-00311,Female,0,Yes,No,2,Yes,Yes,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Credit card (automatic),87.45,174.9
+DRF-00312,Male,0,Yes,Yes,19,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Bank transfer (automatic),23.84,452.96
+DRF-00313,Male,1,No,No,6,Yes,No,DSL,No,Yes,No,No,Yes,No,Month-to-month,Yes,Electronic check,70.26,421.56
+DRF-00314,Female,0,Yes,Yes,22,No,No phone service,DSL,No,No,No,Yes,No,No,Month-to-month,Yes,Credit card (automatic),36.16,795.52
+DRF-00315,Male,1,No,No,0,No,No phone service,DSL,No,No,No,No,No,No,Month-to-month,Yes,Mailed check,27.82,
+DRF-00316,Female,1,Yes,No,13,Yes,Yes,Fiber optic,No,Yes,No,No,Yes,No,Month-to-month,Yes,Electronic check,105.6,1372.8
+DRF-00317,Male,0,Yes,No,19,No,No phone service,DSL,No,No,No,No,No,No,Month-to-month,Yes,Credit card (automatic),30.17,573.23
+DRF-00318,Male,0,No,Yes,0,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Mailed check,22.48,
+DRF-00319,Female,0,No,No,26,No,No phone service,DSL,No,No,No,No,Yes,Yes,Month-to-month,Yes,Credit card (automatic),52.98,1377.48
+DRF-00320,Male,0,No,No,6,Yes,Yes,Fiber optic,No,Yes,No,No,No,No,Month-to-month,Yes,Mailed check,98.8,592.8
+DRF-00321,Female,0,No,No,2,No,No phone service,DSL,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,28.31,56.62
+DRF-00322,Female,0,No,No,0,Yes,Yes,Fiber optic,No,Yes,No,No,No,No,Month-to-month,No,Electronic check,93.36,
+DRF-00323,Male,1,No,No,10,Yes,Yes,Fiber optic,No,Yes,Yes,No,Yes,Yes,Month-to-month,No,Mailed check,119.51,1195.1
+DRF-00324,Male,1,Yes,No,32,Yes,No,Fiber optic,No,Yes,Yes,Yes,No,Yes,Two year,Yes,Credit card (automatic),114.2,3654.4
+DRF-00325,Male,0,Yes,Yes,26,Yes,Yes,DSL,Yes,Yes,Yes,Yes,No,No,Two year,No,Credit card (automatic),81.18,2110.68
+DRF-00326,Female,1,No,No,0,No,No phone service,DSL,No,No,No,No,No,No,Month-to-month,No,Electronic check,28.71,
+DRF-00327,Male,0,Yes,No,14,Yes,No,Fiber optic,No,No,No,No,Yes,Yes,Month-to-month,No,Electronic check,109.17,1528.38
+DRF-00328,Male,0,Yes,No,20,Yes,No,Fiber optic,No,No,No,No,Yes,Yes,One year,Yes,Bank transfer (automatic),107.6,2152.0
+DRF-00329,Male,0,No,No,22,Yes,Yes,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Bank transfer (automatic),90.49,1990.78
+DRF-00330,Female,0,No,No,12,Yes,Yes,DSL,Yes,Yes,No,No,Yes,No,Month-to-month,Yes,Bank transfer (automatic),79.65,955.8
+DRF-00331,Male,0,Yes,Yes,4,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Credit card (automatic),22.09,88.36
+DRF-00332,Male,0,Yes,Yes,23,Yes,Yes,Fiber optic,No,Yes,No,Yes,No,Yes,Month-to-month,Yes,Bank transfer (automatic),113.94,2620.62
+DRF-00333,Male,1,Yes,No,24,Yes,Yes,DSL,Yes,Yes,No,No,No,No,Month-to-month,No,Credit card (automatic),73.15,1755.6
+DRF-00334,Female,0,No,No,9,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Mailed check,22.99,206.91
+DRF-00335,Female,0,Yes,No,32,No,No phone service,DSL,Yes,Yes,Yes,No,No,Yes,Two year,Yes,Electronic check,56.14,1796.48
+DRF-00336,Female,0,No,No,1,Yes,No,Fiber optic,Yes,Yes,No,Yes,No,No,Month-to-month,Yes,Mailed check,99.89,99.89
+DRF-00337,Female,0,Yes,No,32,Yes,Yes,Fiber optic,No,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),130.9,4188.8
+DRF-00338,Female,0,No,No,15,Yes,Yes,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Mailed check,133.82,2007.3
+DRF-00339,Male,0,Yes,No,23,Yes,Yes,Fiber optic,No,Yes,Yes,No,Yes,Yes,Month-to-month,Yes,Electronic check,117.86,2710.78
+DRF-00340,Male,0,Yes,Yes,20,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Bank transfer (automatic),22.73,454.6
+DRF-00341,Male,1,No,No,23,No,No phone service,DSL,No,Yes,No,No,Yes,Yes,Month-to-month,Yes,Electronic check,57.09,1313.07
+DRF-00342,Female,0,Yes,Yes,32,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Bank transfer (automatic),108.37,3467.84
+DRF-00343,Female,0,No,No,15,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Credit card (automatic),85.56,1283.4
+DRF-00344,Female,0,Yes,Yes,16,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Credit card (automatic),22.36,357.76
+DRF-00345,Female,0,Yes,Yes,32,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,No,Credit card (automatic),108.82,3482.24
+DRF-00346,Female,0,Yes,No,12,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,23.33,279.96
+DRF-00347,Male,0,No,No,3,No,No phone service,DSL,Yes,Yes,Yes,Yes,No,No,Month-to-month,Yes,Mailed check,51.39,154.17
+DRF-00348,Male,0,No,No,25,Yes,No,Fiber optic,Yes,Yes,No,No,Yes,Yes,One year,No,Bank transfer (automatic),121.54,3038.5
+DRF-00349,Female,1,No,No,11,Yes,Yes,Fiber optic,Yes,Yes,No,No,Yes,Yes,Month-to-month,Yes,Mailed check,116.32,1279.52
+DRF-00350,Male,0,No,Yes,28,No,No phone service,DSL,Yes,Yes,No,Yes,No,No,Month-to-month,Yes,Bank transfer (automatic),49.63,1389.64
+DRF-00351,Female,0,No,No,16,Yes,No,Fiber optic,No,No,No,No,Yes,Yes,One year,Yes,Mailed check,107.32,1717.12
+DRF-00352,Male,0,Yes,No,32,Yes,Yes,Fiber optic,Yes,Yes,Yes,No,Yes,No,Two year,Yes,Electronic check,119.35,3819.2
+DRF-00353,Female,1,Yes,No,0,Yes,No,DSL,Yes,No,No,No,No,No,Month-to-month,Yes,Electronic check,58.43,
+DRF-00354,Male,1,No,No,31,Yes,Yes,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Mailed check,85.5,2650.5
+DRF-00355,Male,0,Yes,No,21,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Bank transfer (automatic),24.32,510.72
+DRF-00356,Male,1,Yes,No,10,Yes,No,Fiber optic,No,No,No,No,Yes,Yes,Month-to-month,Yes,Electronic check,110.85,1108.5
+DRF-00357,Male,1,Yes,No,1,Yes,Yes,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,84.29,84.29
+DRF-00358,Female,0,Yes,No,26,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Electronic check,23.33,606.58
+DRF-00359,Female,0,No,No,12,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,21.87,262.44
+DRF-00360,Female,1,No,No,1,No,No phone service,DSL,No,No,No,No,No,No,Month-to-month,Yes,Mailed check,31.27,31.27
+DRF-00361,Female,0,No,No,5,Yes,No,DSL,No,No,No,No,No,No,Month-to-month,Yes,Mailed check,51.38,256.9
+DRF-00362,Female,0,Yes,Yes,30,Yes,No,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Credit card (automatic),99.45,2983.5
+DRF-00363,Female,0,Yes,Yes,18,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,31.98,575.64
+DRF-00364,Male,1,No,No,22,Yes,Yes,DSL,Yes,Yes,Yes,Yes,No,Yes,Two year,No,Credit card (automatic),94.23,2073.06
+DRF-00365,Male,0,Yes,No,32,Yes,Yes,Fiber optic,No,Yes,Yes,No,Yes,Yes,Two year,Yes,Bank transfer (automatic),120.09,3842.88
+DRF-00366,Female,1,Yes,No,11,Yes,Yes,Fiber optic,Yes,No,No,Yes,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),120.29,1323.19
+DRF-00367,Female,0,No,No,17,Yes,Yes,Fiber optic,No,Yes,Yes,No,Yes,Yes,Month-to-month,Yes,Electronic check,119.94,2038.98
+DRF-00368,Female,0,No,No,4,No,No phone service,DSL,No,No,Yes,No,Yes,Yes,Month-to-month,Yes,Electronic check,54.35,217.4
+DRF-00369,Male,0,Yes,Yes,24,No,No phone service,DSL,Yes,Yes,Yes,No,Yes,Yes,One year,No,Electronic check,72.4,1737.6
+DRF-00370,Male,0,Yes,No,17,Yes,Yes,DSL,No,No,Yes,Yes,No,Yes,One year,No,Credit card (automatic),80.45,1367.65
+DRF-00371,Female,0,Yes,Yes,32,Yes,Yes,Fiber optic,Yes,No,No,No,No,No,Two year,No,Bank transfer (automatic),91.58,2930.56
+DRF-00372,Male,0,No,No,0,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,Yes,Bank transfer (automatic),24.21,
+DRF-00373,Female,1,No,No,23,Yes,Yes,Fiber optic,No,No,Yes,No,No,Yes,Month-to-month,Yes,Credit card (automatic),105.26,2420.98
+DRF-00374,Female,0,Yes,Yes,27,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,Yes,Credit card (automatic),22.93,619.11
+DRF-00375,Female,0,No,No,0,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Mailed check,23.55,
+DRF-00376,Female,0,Yes,No,32,Yes,Yes,Fiber optic,No,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Electronic check,131.06,4193.92
+DRF-00377,Male,0,No,No,10,Yes,Yes,Fiber optic,No,Yes,No,No,Yes,Yes,Month-to-month,Yes,Electronic check,113.56,1135.6
+DRF-00378,Male,0,No,No,2,Yes,No,DSL,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,53.4,106.8
+DRF-00379,Female,0,Yes,No,1,Yes,No,Fiber optic,No,No,No,No,No,No,Month-to-month,Yes,Credit card (automatic),86.88,86.88
+DRF-00380,Female,0,No,No,3,Yes,Yes,Fiber optic,No,No,Yes,Yes,No,No,Month-to-month,Yes,Electronic check,97.34,292.02
+DRF-00381,Male,0,No,No,0,No,No phone service,DSL,No,No,No,No,No,No,Month-to-month,Yes,Electronic check,29.48,
+DRF-00382,Female,0,Yes,No,32,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),109.01,3488.32
+DRF-00383,Female,1,Yes,No,11,Yes,Yes,Fiber optic,No,No,No,No,Yes,Yes,Month-to-month,Yes,Electronic check,109.07,1199.77
+DRF-00384,Male,0,Yes,Yes,22,Yes,Yes,Fiber optic,Yes,Yes,Yes,No,Yes,Yes,One year,Yes,Electronic check,125.29,2756.38
+DRF-00385,Female,0,No,No,32,Yes,No,DSL,Yes,Yes,Yes,Yes,No,Yes,Month-to-month,Yes,Credit card (automatic),84.3,2697.6
+DRF-00386,Male,0,Yes,Yes,32,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Credit card (automatic),23.01,736.32
+DRF-00387,Female,0,No,No,24,Yes,Yes,Fiber optic,Yes,No,Yes,No,No,No,One year,Yes,Credit card (automatic),103.08,2473.92
+DRF-00388,Male,0,No,No,13,Yes,No,DSL,Yes,No,No,Yes,No,No,Month-to-month,No,Mailed check,60.5,786.5
+DRF-00389,Male,0,Yes,Yes,21,Yes,Yes,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Electronic check,28.82,605.22
+DRF-00390,Male,0,No,No,31,No,No phone service,DSL,No,No,No,Yes,No,Yes,Two year,Yes,Mailed check,48.82,1513.42
+DRF-00391,Male,0,No,No,21,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Two year,No,Bank transfer (automatic),24.77,520.17
+DRF-00392,Male,0,No,No,18,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,One year,No,Mailed check,24.36,438.48
+DRF-00393,Female,0,No,No,0,Yes,No,DSL,No,No,No,No,No,No,Month-to-month,No,Electronic check,49.88,
+DRF-00394,Male,0,Yes,No,8,Yes,Yes,Fiber optic,Yes,Yes,Yes,No,No,No,Month-to-month,No,Credit card (automatic),104.68,837.44
+DRF-00395,Female,0,No,No,7,Yes,No,Fiber optic,No,Yes,Yes,No,No,Yes,Month-to-month,Yes,Credit card (automatic),109.68,767.76
+DRF-00396,Male,1,No,No,9,Yes,No,Fiber optic,No,No,No,No,Yes,Yes,Month-to-month,No,Electronic check,107.62,968.58
+DRF-00397,Female,0,Yes,Yes,27,Yes,No,DSL,Yes,No,No,No,No,No,One year,Yes,Bank transfer (automatic),57.52,1553.04
+DRF-00398,Female,0,Yes,No,14,Yes,No,No,No internet service,No internet service,No internet service,No internet service,No internet service,No internet service,Month-to-month,No,Bank transfer (automatic),23.1,323.4
+DRF-00399,Male,0,No,No,10,Yes,Yes,Fiber optic,No,No,No,Yes,Yes,No,Month-to-month,Yes,Electronic check,112.02,1120.2
+DRF-00400,Female,0,No,No,3,Yes,Yes,Fiber optic,No,Yes,No,No,No,No,Month-to-month,Yes,Bank transfer (automatic),91.66,274.98

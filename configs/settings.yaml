@@ -1,0 +1,71 @@
+# RetentionIQ runtime configuration.
+# Every number here is a business assumption or an operating choice - it is
+# surfaced in the UI next to whatever it influences. Change it here, not in code.
+
+model:
+  random_seed: 42
+  test_size: 0.20          # held-out test share (never used for selection)
+  validation_size: 0.20    # share used for model selection + threshold tuning
+  cv_folds: 5
+  bootstrap_resamples: 500
+  # Misclassification costs used to pick the operating threshold on the
+  # validation set. Relative units: missing a churner is assumed 3x as costly
+  # as one unnecessary outreach.
+  cost_false_positive: 1.0
+  cost_false_negative: 3.0
+
+# A model is only promoted to "production" automatically if it clears this gate
+# on the held-out test set. Otherwise it is registered as a "candidate".
+release_gate:
+  min_test_roc_auc: 0.80
+  min_test_pr_auc: 0.60
+  max_brier: 0.16
+
+# Risk tiers on estimated churn probability (lower bound inclusive).
+# medium: "auto" ties the medium tier to the model's cost-optimised operating
+# threshold, so every customer the model would flag is at least "medium".
+risk_tiers:
+  high: 0.60
+  medium: auto
+
+value:
+  field: MonthlyCharges     # documented value field in the dataset
+  horizon_months: 12        # revenue-at-risk = p(churn) x MonthlyCharges x horizon
+  currency: "$"
+
+decision:
+  outreach_capacity: 200    # customers the retention team can contact per cycle
+  risk_rising_delta: 0.15   # emit customer.risk_rising when a score rises by this much
+  borderline_margin: 0.05   # |p - threshold| below this => "borderline" score
+
+uploads:
+  max_rows: 50000
+  max_megabytes: 20
+
+monitoring:
+  psi_warning: 0.10
+  psi_alert: 0.25
+  min_rows_for_drift: 200   # PSI is unreliable on small samples
+  drift_window_days: 7      # default monitoring window compared with the training reference
+  min_labels_for_performance: 50
+  dq_warning_rate_alert: 0.20
+
+segments:
+  min_cohort_size: 30
+
+# Background worker schedules (seconds). Jobs are enqueued by the worker's
+# scheduler tick and executed from the database-backed queue.
+scheduler:
+  dispatch_webhooks: 15
+  inbox_import: 60
+  monitoring_snapshot: 3600
+  scheduled_rescore: 86400
+
+jobs:
+  inbox_dir: data/inbox        # <inbox_dir>/<org-slug>/*.csv is picked up automatically
+  max_attempts: 3
+
+api:
+  rate_limit_per_minute: 120   # per API key / client
+  cors_origins: []
+

@@ -1,6 +1,29 @@
 __pycache__/
+*.py[cod]
 .ipynb_checkpoints/
 .DS_Store
-*.pyc
+.venv/
 venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Secrets and environment
 .env
+*.pem
+*.key
+
+# Generated artifacts: models, local database, uploads. Reproduce with `make train seed`.
+artifacts/
+*.db
+*.joblib
+*.pkl
+data/uploads/
+
+# Real customer exports must never be committed
+data/private/
+*_scored.csv
+*_errors.csv
+
+# Local runtime folders
+data/inbox/

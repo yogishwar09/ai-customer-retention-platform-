@@ -1,0 +1,105 @@
+# Retention playbook catalogue.
+# Illustrative rules, NOT proven interventions. Effectiveness numbers are
+# assumptions until estimated from controlled experiments (see Monitoring ->
+# Impact). Rules may only reference features that exist in the data contract.
+#
+# Matching: rules are evaluated in priority order; every rule whose conditions
+# hold is "eligible". The recommendation is the eligible action with the
+# highest expected value. Conditions:
+#   min_risk_tier: low | medium | high
+#   any_of / all_of: list of {feature, op, value}
+#     ops: eq, ne, in, lt, lte, gt, gte
+
+policy_version: "2026.10-1"
+
+actions:
+  - code: DATA_REVIEW
+    name: Data review before outreach
+    description: >
+      The input record has data-quality warnings or the score sits on the decision
+      boundary. Verify the source record before any customer contact.
+    channel: internal
+    cost: 2
+    assumed_effectiveness: 0.0
+    requires_approval: false
+    special: data_quality
+
+  - code: RENEWAL_CONVERSATION
+    name: Human-reviewed renewal conversation
+    description: >
+      Month-to-month customer with meaningful tenure. A retention specialist
+      discusses moving to a 1- or 2-year plan. Any price concession must be
+      approved by a manager.
+    channel: phone
+    cost: 25
+    assumed_effectiveness: 0.15
+    requires_approval: true
+    min_risk_tier: medium
+    all_of:
+      - {feature: Contract, op: eq, value: Month-to-month}
+      - {feature: tenure, op: gte, value: 6}
+
+  - code: SERVICE_RECOVERY
+    name: Proactive service check
+    description: >
+      Fiber customer without tech support. Open a proactive service-quality
+      ticket and offer a technical check-up.
+    channel: support_ticket
+    cost: 12
+    assumed_effectiveness: 0.10
+    requires_approval: false
+    min_risk_tier: medium
+    all_of:
+      - {feature: InternetService, op: eq, value: Fiber optic}
+      - {feature: TechSupport, op: eq, value: "No"}
+
+  - code: BILLING_SUPPORT
+    name: Billing clarity + autopay assistance
+    description: >
+      Customer pays by electronic check. Offer help reviewing the invoice and
+      setting up automatic payment (no discount implied).
+    channel: email
+    cost: 4
+    assumed_effectiveness: 0.06
+    requires_approval: false
+    min_risk_tier: medium
+    all_of:
+      - {feature: PaymentMethod, op: eq, value: Electronic check}
+
+  - code: GUIDED_ONBOARDING
+    name: Guided onboarding / feature education
+    description: >
+      Early-tenure customer. Offer a guided walkthrough of services and how to
+      get help.
+    channel: email
+    cost: 3
+    assumed_effectiveness: 0.08
+    requires_approval: false
+    min_risk_tier: medium
+    all_of:
+      - {feature: tenure, op: lt, value: 6}
+
+  - code: SECURITY_BUNDLE_EDUCATION
+    name: Security & backup add-on education
+    description: >
+      Internet customer without online security or backup. Share information on
+      protection add-ons (informational, no automatic enrolment).
+    channel: email
+    cost: 2
+    assumed_effectiveness: 0.04
+    requires_approval: false
+    min_risk_tier: medium
+    all_of:
+      - {feature: InternetService, op: ne, value: "No"}
+    any_of:
+      - {feature: OnlineSecurity, op: eq, value: "No"}
+      - {feature: OnlineBackup, op: eq, value: "No"}
+
+  - code: MONITOR
+    name: No action - keep monitoring
+    description: Risk is low or no eligible action has positive expected value.
+    channel: none
+    cost: 0
+    assumed_effectiveness: 0.0
+    requires_approval: false
+    special: fallback
